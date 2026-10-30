@@ -1,0 +1,24 @@
+# Courses are personal: each learner's course lives here, built by the agent.
+# To keep your course in Git (for example on your own fork), delete these two lines.
+courses/*
+!courses/README.md
+
+# Checkouts of the codebases being learned (made by setup-environment)
+sources/
+
+# Generated run output, caches and isolated environments (also inside courses)
+results/
+cache/
+.env/
+.venv/
+node_modules/
+
+# Python / OS noise
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+
+# Agent-local state
+.claude/settings.local.json
+.codex/

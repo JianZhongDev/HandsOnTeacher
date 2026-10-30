@@ -1,0 +1,74 @@
+name: check
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  repo-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.9"
+      - name: Repository self-check (skills, mirrors, links, paths, line endings)
+        run: python tools/check_repo.py
+      - name: Launcher syntax
+        run: bash -n .agents/skills/setup-environment/assets/lab.sh
+      - name: Course tools run on Python 3.9 with the standard library only
+        run: |
+          python tools/new_course.py ci-smoke --title "CI smoke test" \
+            --source https://github.com/example/repo --source https://example.org/guide
+          python tools/new_module.py ci-smoke 01 first-module --title "First module"
+          PYTHONPATH=courses/ci-smoke/_shared python -c "import handson; print('kit imports without third-party packages')"
+          printf '# Notes\n\nCaches store results.\n' > /tmp/notes.md
+          printf '<html><body><h1>Guide</h1><p>Evict the oldest.</p></body></html>' > /tmp/guide.html
+          python tools/extract_text.py ci-smoke /tmp/notes.md /tmp/guide.html
+          python tools/lesson_stats.py --all
+          touch courses/ci-smoke/figures/course_map.png
+          python tools/export_course.py ci-smoke /tmp/ci-export --lessons-as-examples
+          cd /tmp/ci-export && python tools/check_repo.py
+
+  macos-launcher:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Course tools with the system python3, launcher under macOS /bin/bash 3.2
+        run: |
+          /bin/bash --version | head -1
+          python3 --version
+          python3 tools/new_course.py ci-mac --title "macOS smoke test" --source https://github.com/example/repo
+          python3 tools/new_module.py ci-mac 01 first-module
+          python3 -m venv courses/ci-mac/.env
+          mkdir -p courses/ci-mac/01-first-module/lessons/L01-smoke
+          cp .github/ci/smoke_lab.py courses/ci-mac/01-first-module/lessons/L01-smoke/lab.py
+          cd courses/ci-mac
+          /bin/bash ./lab.sh check
+          /bin/bash ./lab.sh list | grep "01/L01" > /dev/null
+          /bin/bash ./lab.sh 01/L01 help
+          /bin/bash ./lab.sh 01/L01 size=5 | grep "size = 5" > /dev/null
+          ./lab.sh 01/L01 size=7 | grep "size = 7" > /dev/null
+          test -f 01-first-module/lessons/L01-smoke/results/size=7/metrics.json
+
+  windows-launcher:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Course tools and the Windows launcher (lab.cmd)
+        shell: cmd
+        run: |
+          python tools/new_course.py ci-win --title "Windows smoke test" --source https://github.com/example/repo || exit /b 1
+          python tools/new_module.py ci-win 01 first-module || exit /b 1
+          python -m venv courses\ci-win\.env || exit /b 1
+          mkdir courses\ci-win\01-first-module\lessons\L01-smoke
+          copy .github\ci\smoke_lab.py courses\ci-win\01-first-module\lessons\L01-smoke\lab.py
+          cd courses\ci-win
+          call .\lab check || exit /b 1
+          call .\lab list | findstr /c:"01/L01" || exit /b 1
+          call .\lab 01/L01 help || exit /b 1
+          call .\lab 01/L01 size=5 | findstr /c:"size = 5" || exit /b 1
+          if not exist "01-first-module\lessons\L01-smoke\results\size=5\metrics.json" exit /b 1
