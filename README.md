@@ -11,11 +11,12 @@ Agent:  6 modules, about 5 hours. Module 01: run the cache under real load and w
 
 ## What learning feels like
 
+- **Big picture first.** Module 01 shows the whole subject as a few boxes and runs it end to end. Each later module zooms into one box: a five-minute primer on the general fundamentals, then experiments with the codebase. Deeper topics come last, as optional bonus modules.
 - **One experiment per lesson, 20–40 minutes.** Each teaches 2–4 related ideas. A lesson card has at most 200 words; the rest is doing.
 - **You see consequences, not numbers.** One run compares several settings side by side: what the program outputs, how fast it is, when it breaks.
 - **You build first, then compare.** For design topics you write your own small version, run it next to the codebase's, then learn why the authors chose theirs.
 - **Transferable first.** Each idea is named in general terms, shown in the codebase, and linked to where else it applies.
-- **Depth when you ask.** Type `math`, `deeper`, `why` or `source` for derivations and code walkthroughs; `faster` for even shorter messages.
+- **Depth when you ask.** Type `math`, `deeper`, `why` or `source` for derivations and code walkthroughs, `deeper <idea>` for more on a fundamental; `faster` for even shorter messages.
 - **Your progress is saved in files**, so you can stop any time and any agent can continue.
 
 ## Quick start
@@ -33,11 +34,12 @@ Agent:  6 modules, about 5 hours. Module 01: run the cache under real load and w
 goal + sources ──► create-course: survey ─► environment ─► course helpers ─► curriculum ─► course map
   (repos, docs, URLs)                                                               │
    each module ──► plan-module ──► each lesson ──► teach-lesson ──► session-handoff
-                                                  (card + lab + 3 short turns)
+               (primer: big picture + fundamentals)   (card + lab + 3 short turns)
 ```
 
 - **The method is written down.** [method/](method/) holds the teaching rules, the curriculum design process, lab patterns for different kinds of codebases, and a writing guide with before-and-after examples. `.agents/skills/` holds the step-by-step procedures the agent follows.
 - **Your repository is never modified.** Each course works on its own checkout in `sources/` and its own runtime in `courses/<course>/.env/`. Labs change behavior through settings, wrappers and patches inside the lab.
+- **Top-down curriculum.** Big picture → core modules for the essential parts (ending with a capstone) → optional bonus modules for depth.
 - **Lessons are built just in time.** The full curriculum is written at the start; each module's lessons are built and tested when you reach them, so they adapt to how you are doing.
 - **Several sources, one course.** Code from one or more repositories drives the experiments; papers, docs and web pages supply concepts and the "why", stored as searchable text with page citations.
 - **Shareable.** `export-course` packages a course as its own repository, like [Learn RL with MicroDuck](https://github.com/JianZhongDev/LearnRLWithMicroDuck): anyone can clone it and get the course built fresh for them.

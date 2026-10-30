@@ -11,7 +11,7 @@ A two-minute orientation for AI agents and for people who want to change the met
  method/TEACHING_RULES.md       COURSE.md  SURVEY.md            tools/lesson_stats.py (budgets)
  method/CURRICULUM_DESIGN.md    STATE.md   LEARNER.md           courses/<course>/lab.sh, lab.cmd
  method/LAB_PATTERNS.md         course.json                     courses/<course>/_shared/handson
- method/WRITING_GUIDE.md        NN-<module>/MAP NOTES TODO        (copied from kit/handson)
+ method/WRITING_GUIDE.md        NN-<module>/MAP PRIMER NOTES TODO (copied from kit/handson)
  .agents/skills/                  lessons/L<nn>-<name>/         sources/<repo> (codebase checkout)
 ```
 
@@ -23,12 +23,13 @@ A session always goes: read the instructions → read the course memory → do o
 "teach me X with repos Y, Z and these papers"
    └─ create-course ─ intake ─ new_course.py ─ clone repos to sources/, extract documents to materials/
                      ─ survey (SURVEY.md, sources map) ─ setup-environment (.env/, launcher, course.json)
-                     ─ course helpers (_shared/, selftest) ─ curriculum (COURSE.md) ─ pilot Module 01
+                     ─ course helpers (_shared/, selftest) ─ curriculum (COURSE.md: big picture, core, bonus)
+                     ─ pilot Module 01
                      ─ course map ─ STATE: next = plan-module 01
 a shared or exported course
    └─ start-course ─ setup-environment (clones from course.json) ─ learner profile ─ course map
 "continue"
-   └─ teach-lesson ─ no MAP.md? → plan-module (new_module.py, module map, 2–3 lessons)
+   └─ teach-lesson ─ no MAP.md? → plan-module (new_module.py, primer, module map, 2–3 lessons)
                    ─ build-lab (lab.py, your_turn.py) ─ run it ─ LESSON.md ─ lesson_stats + review-lesson
                    ─ deliver in three turns ─ session-handoff (STATE, NOTES, MAP, COURSE status)
 questions          └─ ask (answers; demos in questions/; never advances the course)
@@ -54,9 +55,10 @@ sharing            └─ export-course (tools/export_course.py: standalone repo
 
 ## Design choices worth knowing
 
-- **Reading time is the scarcest resource.** Cards ≤ 200 words of prose (checked by `tools/lesson_stats.py`), chat turns ≤ 120. Depth is folded or given on request.
+- **Whole before parts, parts before details.** Module 01 is the big picture of the subject, run end to end; each core module zooms into one box and opens with a primer of general fundamentals; deeper topics are bonus lessons and modules after the core.
+- **Reading time is the scarcest resource.** Cards ≤ 200 words of prose and primers ≤ 250 (checked by `tools/lesson_stats.py`), chat turns ≤ 120. Depth is folded or given on request.
 - **Experiments, not ideas.** A lesson is one 20–40 minute experiment that teaches 2–4 ideas, compares settings in one run, and shows behavior. Smaller ideas are bullets.
-- **Curriculum up front, lessons just in time.** `COURSE.md` covers the whole course from day one; module maps and labs are built when the learner arrives, using what `NOTES.md` says about how earlier lessons went.
+- **Curriculum up front, lessons just in time.** `COURSE.md` covers the whole course from day one; primers, module maps and labs are built when the learner arrives, using what `NOTES.md` says about how earlier lessons went.
 - **Transferable first.** Modules are chosen by value to the learner's goal × how widely the idea transfers; the codebase is the worked example.
 - **Short always-loaded instructions, details on demand.** `AGENTS.md` fits on two screens; procedures live in skills that load only when used. Long rule files are forgotten mid-session.
 - **Machine differences are data, not prose.** `course.json` holds the runtime, launcher and timings; the launcher hides the OS.

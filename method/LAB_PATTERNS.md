@@ -17,6 +17,16 @@ Every pattern follows the same shape: **one run, 2–5 settings, side by side, a
 | **Systems / concurrency / networking** | thread count, buffer sizes, timeouts, injected faults | throughput, latency, deadlocks, error rates | throughput vs setting curve |
 | **Algorithms / data structures** | input size and shape, the algorithm variant | operations count, time, correctness | scaling plot (size vs time) |
 
+## Big-picture labs (Module 01)
+
+Module 01 shows the whole subject working, one box of the course map at a time. Three patterns work in almost any codebase:
+
+- **Trace one input through every box:** capture what each stage receives and hands on, one row per box (a request through router, handler and database; an instruction through fetch, decode and execute).
+- **Change or switch off one stage** and watch the effect downstream: no cache, an optimizer pass disabled, a robot without its controller.
+- **Time each stage** of one end-to-end run: one bar per box shows where the time goes.
+
+Label every output with the box of the course map it belongs to.
+
 ## Ways to change behavior without editing the codebase
 
 The codebase is read-only for lessons. In order of preference:

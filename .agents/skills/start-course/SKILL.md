@@ -24,10 +24,12 @@ Write the answers to `LEARNER.md`. If they want to skip modules they already kno
 
 ## 3. How the course works (≤ 120 words plus the course map)
 
-Show `figures/course_map.png` and the module table from `COURSE.md`. Then, in the learner's language:
+Show `figures/course_map.png` (the big picture) and the module table from `COURSE.md`. Then, in the learner's language:
 
-- Each lesson is one 20–40 minute experiment: a short card and one command → run it → read the results together and try a tweak → a two-line wrap-up. Design topics start with their own version in `your_turn.py`.
-- Depth on request: `math`, `deeper`, `why`, `source`; shorter: `faster`.
+- The course goes top-down: Module 01 shows the whole subject running; each later module zooms into one part, starting with a five-minute primer on the fundamentals. Bonus modules are optional depth after the core.
+
+- After the primer, each lesson is one 20–40 minute experiment: a short card and one command → run it → read the results together and try a tweak → a two-line wrap-up. Design topics start with their own version in `your_turn.py`.
+- Depth on request: `math`, `deeper`, `deeper <idea>`, `why`, `source`; shorter: `faster`; optional extras: `bonus`.
 - One agent session per lesson; progress is saved in files. `START_HERE.md` lists what to type.
 
 ## 4. Record and hand over

@@ -2,7 +2,8 @@
 
 `flow_diagram` draws the "big picture" process with today's step highlighted.
 Every lesson starts with one of these, so the learner always sees where the
-current detail fits.
+current detail fits. `layer_diagram` draws a stack of layers (applications,
+operating system, drivers, hardware), the course map of a layered subject.
 
     flow_diagram(
         [("Request", "HTTP in"), ("Router", "match a handler"),
@@ -143,6 +144,71 @@ def flow_diagram(
 
     if title:
         ax.text(total_w / 2, box_h + 0.62, title, ha="center", va="bottom", fontsize=14,
+                fontweight="bold", color=COLORS["ink"])
+    if path is not None:
+        save_fig(fig, path)
+    return fig
+
+
+def layer_diagram(
+    layers: Sequence[str | tuple[str, str]],
+    highlight: int | Sequence[int] | None = None,
+    title: str = "",
+    path: str | Path | None = None,
+    side_labels: Sequence[str] | None = None,
+    highlight_tag: str = "THIS MODULE",
+    width: float = 6.0,
+    layer_height: float = 0.8,
+    gap: float = 0.14,
+):
+    """Draw a stack of layers, top layer first (the course map of a layered subject).
+
+    layers       list of "Title" or ("Title", "short description"), top (closest to the user) first
+    highlight    index or indices of the layer(s) this module zooms into
+    side_labels  optional text right of each layer, for example the modules that cover it
+    """
+    use_style()
+    items = [(s, "") if isinstance(s, str) else (s[0], s[1]) for s in layers]
+    hl = set([highlight] if isinstance(highlight, int) else (highlight or []))
+    n = len(items)
+    total_h = n * layer_height + (n - 1) * gap
+    side_w = 2.8 if (side_labels or hl) else 0.2
+    top = 0.65 if title else 0.15
+    fig = plt.figure(figsize=(width + side_w + 0.2, total_h + top + 0.2))
+    ax = fig.add_axes([0, 0, 1, 1])   # one data unit = one inch, so text sizes stay predictable
+    ax.set_xlim(-0.1, width + side_w + 0.1)
+    ax.set_ylim(-0.1, total_h + top + 0.1)
+    ax.axis("off")
+
+    for i, (name, sub) in enumerate(items):
+        y0 = total_h - (i + 1) * layer_height - i * gap
+        yc = y0 + layer_height / 2
+        is_hl = i in hl
+        ax.add_patch(FancyBboxPatch(
+            (0, y0), width, layer_height,
+            boxstyle="round,pad=0.02,rounding_size=0.12",
+            linewidth=2.6 if is_hl else 1.2,
+            edgecolor=COLORS["highlight"] if is_hl else COLORS["edge"],
+            facecolor=COLORS["highlight_fill"] if is_hl else COLORS["box"],
+        ))
+        if sub:
+            ax.text(0.2, yc, _wrap(name, 18), ha="left", va="center", fontsize=12.5, fontweight="bold",
+                    color=COLORS["ink"])
+            ax.text(width * 0.42, yc, _wrap(sub, int(width * 0.55 * 14)), ha="left", va="center",
+                    fontsize=9.5, color=COLORS["muted"])
+        else:
+            ax.text(width / 2, yc, name, ha="center", va="center", fontsize=12.5, fontweight="bold",
+                    color=COLORS["ink"])
+        side = side_labels[i] if side_labels and i < len(side_labels) else ""
+        if is_hl and highlight_tag:
+            side = f"{side}  \u2190 {highlight_tag}".strip()
+        if side:
+            ax.text(width + 0.2, yc, side, ha="left", va="center", fontsize=10,
+                    fontweight="bold" if is_hl else "normal",
+                    color=COLORS["highlight"] if is_hl else COLORS["muted"])
+
+    if title:
+        ax.text(width / 2, total_h + 0.25, title, ha="center", va="bottom", fontsize=14,
                 fontweight="bold", color=COLORS["ink"])
     if path is not None:
         save_fig(fig, path)

@@ -9,7 +9,7 @@ Modules:
     handson.labkit   lab_config: key=value settings from the command line, one results folder per setting
     handson.compare  print_table, side_by_side (Pillow), timed
     handson.explore  slider_page: a self-contained HTML page with a slider, for instant what-if exploration
-    handson.viz      use_style, save_fig, flow_diagram (module maps); needs matplotlib
+    handson.viz      use_style, save_fig, flow_diagram (maps), layer_diagram (layered course maps); needs matplotlib
     handson.colors   COLORS, SERIES
 
 Importing handson needs only the standard library. The plotting helpers need matplotlib and
@@ -24,7 +24,7 @@ from handson.labkit import LabRun, lab_config
 
 def __getattr__(name):
     # matplotlib is slow to import and optional: load the plotting helpers on first use.
-    if name in {"use_style", "save_fig", "flow_diagram"}:
+    if name in {"use_style", "save_fig", "flow_diagram", "layer_diagram"}:
         from handson import viz
 
         return getattr(viz, name)
@@ -32,4 +32,4 @@ def __getattr__(name):
 
 
 __all__ = ["lab_config", "LabRun", "print_table", "side_by_side", "timed", "slider_page",
-           "use_style", "save_fig", "flow_diagram", "COLORS", "SERIES"]
+           "use_style", "save_fig", "flow_diagram", "layer_diagram", "COLORS", "SERIES"]

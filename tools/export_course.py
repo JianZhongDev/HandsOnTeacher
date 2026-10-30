@@ -102,7 +102,9 @@ def main() -> int:
           .replace("finish `create-course` (survey, environment, curriculum), then `plan-module` for Module 01.",
                    "use the `start-course` skill: set up the environment, record the learner profile, show the course map."))
     course_md = (course / "COURSE.md").read_text(encoding="utf-8")
-    course_md = re.sub(r"^(\|[ \t]*\d{2}[ \t]*\|.*\|)[^|\n]*\|[ \t]*$", r"\1 not started |", course_md, flags=re.M)
+    def fresh_status(row: re.Match) -> str:   # bonus modules stay optional
+        return row.group(1) + (" optional |" if re.search(r"\|[ \t]*bonus[ \t]*\|", row.group(1)) else " not started |")
+    course_md = re.sub(r"^(\|[ \t]*\d{2}[ \t]*\|.*\|)[^|\n]*\|[ \t]*$", fresh_status, course_md, flags=re.M)
     write(target / "COURSE.md", course_md)
 
     info.update(ready=False, checked="", timings_note="measured on the author's machine; re-measured by setup",
@@ -127,7 +129,7 @@ def main() -> int:
         for module in modules:
             if not any(module.glob("lessons/*/LESSON.md")):   # scaffolded but never built: nothing to show
                 continue
-            for name in ("MAP.md", "figures", "lessons"):
+            for name in ("MAP.md", "PRIMER.md", "figures", "lessons"):
                 if (module / name).exists():
                     copy(module / name, dest / "examples" / args.course / module.name / name)
 

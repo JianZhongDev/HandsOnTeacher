@@ -11,6 +11,7 @@ A visual must save the learner reading. If a paragraph describes how something f
 
 | You are explaining | Use | How |
 |---|---|---|
+| The whole subject (course map) | layer stack for layered systems, flow diagram for pipelines and algorithms | `ho.layer_diagram(...)` or `ho.flow_diagram(...)`, labelled with module numbers; redrawn with one box highlighted for each module's primer |
 | Where today's topic fits | module map, today highlighted | `ho.flow_diagram(..., highlight=[i])`, one per lesson (made by `plan-module`) |
 | A process or algorithm (steps in order) | flow diagram **or** pseudocode | `ho.flow_diagram`; or a code block with plain names and comments |
 | What happens over time | timeline with labelled blocks | matplotlib bars on a time axis, one row per actor or process |

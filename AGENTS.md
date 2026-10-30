@@ -15,6 +15,7 @@ This file is the single source of truth for every agent (Codex, Claude Code, Gem
 4. Act on what the learner typed:
    - a skill name → follow that skill;
    - "continue", "next" or similar → `teach-lesson`;
+   - "bonus" → `teach-lesson` (optional bonus lessons and modules);
    - a question → `ask`.
 
 Use one session per lesson. Do not rely on earlier conversation; the files are the memory.
@@ -25,11 +26,11 @@ Skills are step-by-step procedures in `.agents/skills/<name>/SKILL.md`, read dir
 
 | Skill | Use it to |
 |---|---|
-| `create-course` | turn a learning goal + sources (codebases, documents, web pages) into a course: survey, curriculum, environment, course helpers, course map |
+| `create-course` | turn a learning goal + sources (codebases, documents, web pages) into a course: survey, top-down curriculum (big picture, core, bonus), environment, course helpers, course map |
 | `start-course` | start a learner on an existing course (for example one shared or exported by someone else) |
 | `setup-environment` | get the codebases and an isolated runtime working on this machine; configure the lab launcher |
-| `plan-module` | start a module: module map and 2–3 experiment-sized lessons |
-| `teach-lesson` | prepare and deliver one lesson (card + lab + three short chat turns) |
+| `plan-module` | start a module: primer (its place in the big picture + general fundamentals), module map and 2–3 experiment-sized lessons |
+| `teach-lesson` | prepare and deliver one lesson (card + lab + three short chat turns), including bonus lessons on request |
 | `build-lab` | write and test a lab that compares settings in one run |
 | `make-visual` | choose and make maps, diagrams, comparison pictures and plots |
 | `explain-deeply` | depth on demand: math, algorithms, design reasons, source walkthroughs |
@@ -43,13 +44,13 @@ Skills are step-by-step procedures in `.agents/skills/<name>/SKILL.md`, read dir
 The learner's reading time is the scarcest resource. Doing beats reading.
 
 1. **Lessons are experiments.** One 20–40 minute experiment teaches 2–4 related ideas. A one-sentence idea is a bullet, never a lesson. Modules have 2–3 lessons.
-2. **Hard budgets.** Lesson card ≤ 200 words of prose (`tools/lesson_stats.py`). Chat turn ≤ 120 words plus one picture or code block. Follow `method/WRITING_GUIDE.md`; cut 40% after drafting.
-3. **Do first, read second.** The learner runs, edits or drags something in the first minute. Show the result, then explain it in 2–3 sentences.
+2. **Hard budgets.** Lesson card ≤ 200 words of prose, module primer ≤ 250 (`tools/lesson_stats.py`). Chat turn ≤ 120 words plus one picture or code block. Follow `method/WRITING_GUIDE.md`; cut 40% after drafting.
+3. **Do first, read second.** In every lesson the learner runs, edits or drags something in the first minute; the module primer is the one short read. Show the result, then explain it in 2–3 sentences.
 4. **Show consequences in behavior.** Compare 2–5 settings in one run: side by side, with a table of observable metrics. Slow processes (training, building) run briefly, then get measured.
 5. **Build first, then compare.** For design topics, the learner writes their own version in `your_turn.py`, then sees the codebase's design and why.
 6. **Transferable first.** Name the general idea, show it in the codebase, end with where else it applies.
-7. **Depth on demand.** Derivations, arithmetic and source details only on `math` / `deeper` / `why` / `source`, or folded in `<details>`.
-8. **Map in one glance.** Map image plus one placing sentence per lesson.
+7. **Depth on demand.** Derivations, arithmetic and source details only on `math` / `deeper` / `why` / `source`, or folded in `<details>`. More on any primer idea with `deeper <idea>`.
+8. **Whole before parts, parts before details.** Module 01 is the big picture: the whole subject in 4–8 boxes, run end to end. Each module opens with a primer (its place on the course map, then 3–5 general fundamentals), then experiments. Each lesson opens with its map image and one placing sentence. Deeper topics are bonus lessons and modules after the core.
 9. **Plain words, no hedges.** Define new terms in one sentence. Code instead of prose for computations.
 10. **Honest and credited, briefly.** Never invent results. At most one caveat line. Name sources in one line. Status and verification go in `NOTES.md`, never in chat.
 11. **End every message with one `▶ Next:` line** giving the exact command or reply, consistent with `START_HERE.md`.

@@ -19,13 +19,14 @@ A lesson is one hands-on experiment of 20–40 minutes that teaches 2–4 relate
 ### 2. Short, with hard budgets
 
 - **Lesson card** (`LESSON.md`): at most **200 words of prose**, plus one picture and one code block. `tools/lesson_stats.py` must pass.
+- **Module primer** (`PRIMER.md`): at most **250 words of prose**, plus the course map and one concept picture. Delivering it in chat may take up to 200 words.
 - **Chat turn:** at most **120 words**, plus one picture or code block.
 - One idea per sentence, about 20 words at most. No restating, no recaps, no status or verification reports: those go in `NOTES.md`.
 - Follow `method/WRITING_GUIDE.md`. After drafting, cut about 40%.
 
 ### 3. Do first, read second
 
-Within the first minute the learner runs, edits or drags something. Show the result, then explain what they saw in two or three sentences.
+In every lesson, within the first minute the learner runs, edits or drags something. Show the result, then explain what they saw in two or three sentences. The module primer before a module's first lesson (rule 9) is the one short read: about five minutes, best with a one-command demo.
 
 ### 4. Changes must show consequences
 
@@ -47,11 +48,14 @@ Give 2–3 meaningful knobs (`key=value` on the command line), plus an editable 
 
 ### 8. Depth on demand
 
-The main path is intuition, code and result. Derivations, symbol tables, step-by-step arithmetic, source walkthroughs and caveats appear only when the learner asks (`math`, `deeper`, `why`, `source`) or inside a collapsed `<details>` block. When they ask, follow the `explain-deeply` skill fully.
+The main path is intuition, code and result. Derivations, symbol tables, step-by-step arithmetic, source walkthroughs and caveats appear only when the learner asks (`math`, `deeper`, `why`, `source`) or inside a collapsed `<details>` block. The learner can also ask for more on any primer idea (`deeper <idea>`). When they ask, follow the `explain-deeply` skill fully.
 
-### 9. Big picture in one glance
+### 9. Whole before parts, parts before details
 
-Each lesson opens with the module map image (today highlighted) and **one sentence** placing today's experiment in it. The full process explanation belongs to the module overview, once.
+- **Course:** Module 01 is the big picture: the whole subject as 4–8 boxes (the course map), run end to end, before any part is studied in depth. For a method or algorithm, its summary as short pseudocode.
+- **Module:** each module opens with a **primer** (`PRIMER.md`): the course map with this module's box highlighted, then 3–5 fundamental ideas in general, textbook terms. Codebase details come after, in the experiments.
+- **Lesson:** each lesson opens with the module map image (today highlighted) and **one sentence** placing today's experiment in it.
+- **Details last:** narrower or deeper topics are bonus lessons and bonus modules, offered after the core, never mixed into it.
 
 ### 10. Plain words
 
@@ -77,8 +81,8 @@ Defaults; the learner can change them in `LEARNER.md`.
 
 - **Lesson card:** the `teach-lesson` template. Map, goal (one sentence), the experiment (code), what to try, a one-line takeaway. Details are folded.
 - **Chat:** three short turns: (1) map + goal + command; (2) result picture + 2–3 sentences + 1–2 things to try; (3) two-bullet takeaway + one transfer line + saved.
-- **Learner shortcuts** (always honored): `faster`, `math` / `deeper` / `why` / `source`, `run it for me`, `skip`.
-- **New module:** module map + one line per lesson in a short table. Nothing more.
+- **Learner shortcuts** (always honored): `faster`, `math` / `deeper` / `why` / `source`, `deeper <idea>`, `run it for me`, `skip`, `bonus`.
+- **New module:** the primer: the course map with this module highlighted, 3–5 fundamentals, one line per lesson in a short table. Nothing more.
 - **Questions:** answer the question asked, as briefly. Do not move on unless asked.
 
 ## Working boundaries

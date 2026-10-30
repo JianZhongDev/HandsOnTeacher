@@ -4,7 +4,7 @@ Each course the agent creates lives in its own folder here, for example `courses
 
 ```
 courses/<course>/
-  COURSE.md       the curriculum: outcomes, modules, status
+  COURSE.md       the curriculum: outcomes, modules (big picture, core, bonus), status
   STATE.md        where you are and what comes next
   LEARNER.md      your background, goal, time budget, language, preferences
   SURVEY.md       the agent's one-page notes on the codebase
@@ -15,7 +15,7 @@ courses/<course>/
   _shared/        lab helpers: the handson kit, plus helpers that wrap the codebase (README.md, selftest.py)
   figures/        the course map
   questions/      small demos made to answer your questions
-  NN-<module>/    MAP.md  NOTES.md  TODO.md  figures/  lessons/L<nn>-<name>/
+  NN-<module>/    PRIMER.md  MAP.md  NOTES.md  TODO.md  figures/  lessons/L<nn>-<name>/
   .env/           the isolated runtime (not in Git)
 ```
 

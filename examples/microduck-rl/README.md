@@ -20,7 +20,10 @@ This method was distilled from building and trial-teaching [Learn RL with MicroD
 
 ```
 ### 12 — Make a policy survive the robot it was not trained on
+Track: core
+Place in the big picture: between training in simulation and running on the real robot
 Big question: Which differences between simulator and robot break a trained policy, and does practising on variation fix that?
+Primer: the sim-to-real gap; overfitting to one environment; domain randomization; testing on held-out conditions
 Transferable idea: domain randomization and sensitivity sweeps; also used for drones, grasping and self-driving perception
 Read (agent): the task's randomization config and the upstream AGENTS.md notes on transfer; Tobin et al. 2017
 Experiments: sweep friction / delay / voltage on one fixed policy → falls per robot-minute and a robustness curve;
@@ -29,24 +32,25 @@ Build task: choose the practice ranges in your_turn.py
 Evidence: a robustness curve and a table of failure modes on held-out conditions
 After this module you can: choose randomization ranges from measurements and test on held-out conditions
 Cost: ~4 min and ~15 min on an NVIDIA GPU; one shared 10-minute policy, cached
+Bonus lessons: system identification (measure the real robot's parameters to set the ranges)
 ```
 
 The module that came out of it: [MAP.md](12-domain-randomization-and-transfer/MAP.md), and one finished lesson card: [12.L02](12-domain-randomization-and-transfer/lessons/L02-practice-with-variation/LESSON.md) with its [your_turn.py](12-domain-randomization-and-transfer/lessons/L02-practice-with-variation/your_turn.py). The card is 176 words; everything else is in the lab's output and the folded details.
 
 ## A lightning cut (illustrative)
 
-With a 6-hour budget, ranking by value to the goal × how widely it transfers keeps six modules:
+With a 6-hour budget, ranking by value to the goal × how widely it transfers keeps six modules in the core:
 
-| Keep | Why |
-|---|---|
-| The feedback loop | orient: run the whole loop and change one knob |
-| How a simulator becomes an RL environment | the core mechanism every later module changes |
-| Reward design and reward exploitation | design track: build a reward term, watch the policy exploit it |
-| Domain randomization and the transfer gap | the skill that most transfers to other robots |
-| Fair RL experiments | evaluation: tells real improvements from luck |
-| Capstone: improve one behavior | uses the four modules above |
+| Track | Module | Why |
+|---|---|---|
+| big picture | The feedback loop | the whole loop (robot, sensors, policy, motors, reward, training) run end to end, one box at a time |
+| core | How a simulator becomes an RL environment | the core mechanism every later module changes |
+| core | Reward design and reward exploitation | design track: build a reward term, watch the policy exploit it |
+| core | Domain randomization and the transfer gap | the skill that most transfers to other robots |
+| core | Fair RL experiments | evaluation: tells real improvements from luck |
+| core | Capstone: improve one behavior | uses the four modules above |
 
-Cut or folded into bullets: kinematics derivations, tabular RL, PPO internals, export and the runtime. They matter for a full course, not for this goal in six hours.
+Bonus modules, offered after the capstone: kinematics derivations, tabular RL, PPO internals, export and the runtime. They matter for a full course, not for the core of this goal in six hours.
 
 ## What the first version got wrong
 

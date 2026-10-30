@@ -5,6 +5,7 @@
 Example:  python tools/new_module.py caching-with-redis 03 eviction-policies
 Creates courses/<course>/<NN>-<module-name>/ with:
     MAP.md     from .agents/skills/plan-module/assets/MAP_TEMPLATE.md
+    PRIMER.md  from .agents/skills/plan-module/assets/PRIMER_TEMPLATE.md (place in the big picture + fundamentals)
     NOTES.md   dated history, with a "module started" entry
     TODO.md    parked side topics
     figures/   module map and concept figures, with the script that makes them
@@ -21,7 +22,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-TEMPLATE = ROOT / ".agents" / "skills" / "plan-module" / "assets" / "MAP_TEMPLATE.md"
+ASSETS = ROOT / ".agents" / "skills" / "plan-module" / "assets"
 
 
 def main() -> int:
@@ -46,10 +47,11 @@ def main() -> int:
     today = dt.date.today().isoformat()
 
     files = {
-        "MAP.md": TEMPLATE.read_text(encoding="utf-8").replace("<NN>", number).replace("<title>", title),
+        "MAP.md": (ASSETS / "MAP_TEMPLATE.md").read_text(encoding="utf-8").replace("<NN>", number).replace("<title>", title),
+        "PRIMER.md": (ASSETS / "PRIMER_TEMPLATE.md").read_text(encoding="utf-8").replace("<NN>", number).replace("<title>", title),
         "NOTES.md": (f"# Module {number} notes — {title}\n\n"
                      "Dated history: append entries, never rewrite. Format in the session-handoff skill.\n\n"
-                     f"## {today} — module started\n\n- Plan: `MAP.md` (written by plan-module).\n"
+                     f"## {today} — module started\n\n- Plan: `PRIMER.md` and `MAP.md` (written by plan-module).\n"
                      "- Learner did: nothing yet in this module.\n"),
         "TODO.md": (f"# Module {number} to-do\n\n"
                     "Parked side topics and unfinished work. One line each, with the date and where it came from.\n"),

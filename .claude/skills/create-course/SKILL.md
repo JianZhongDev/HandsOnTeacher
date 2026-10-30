@@ -5,7 +5,7 @@ description: Turn what the learner wants to learn plus their sources - one or mo
 
 # Create a course
 
-Goal of this session: the learner sees a short, complete curriculum built around what they want to learn, the code runs on their machine through a small course helper library, and Module 01 is ready to start. The curriculum method is `method/CURRICULUM_DESIGN.md`; read it first.
+Goal of this session: the learner sees a short, complete curriculum built top-down around what they want to learn (the big picture first, then the essential parts, then optional bonus depth), the code runs on their machine through a small course helper library, and Module 01 is ready to start. The curriculum method is `method/CURRICULUM_DESIGN.md`; read it first.
 
 ## 1. Intake (one message)
 
@@ -37,7 +37,7 @@ It records each source in `course.json` (`sources`) with a guessed kind (`repo`,
 
 ## 4. Survey (time-boxed: read, do not run everything)
 
-Follow `method/CURRICULUM_DESIGN.md` § 2 and fill `SURVEY.md` (one page; the agent's memory of the material): architecture in 4–8 boxes, concepts (general vs specific), experiment surfaces with run times, design decisions with their reasons, costs and risks. With several sources, also fill the sources map: which source teaches which concept, and which source wins where they disagree (versions, terminology). `method/LAB_PATTERNS.md` lists where experiments usually are.
+Follow `method/CURRICULUM_DESIGN.md` § 2 and fill `SURVEY.md` (one page; the agent's memory of the material): the big picture of the subject in 4–8 boxes (the layers or stages of the knowledge itself, as an expert would draw them, marking which ones the codebase shows), the codebase's architecture in 4–8 boxes, concepts (general vs specific), experiment surfaces with run times, design decisions with their reasons, costs and risks. With several sources, also fill the sources map: which source teaches which concept, and which source wins where they disagree (versions, terminology). `method/LAB_PATTERNS.md` lists where experiments usually are.
 
 ## 5. Environment
 
@@ -57,15 +57,16 @@ Follow `method/CURRICULUM_DESIGN.md` §§ 1, 3–5. Write `COURSE.md` from its t
 
 - outcomes (3–6, starting with verbs), split into transferable and codebase-specific;
 - course-specific rules: asset licenses, compute facts, domain safety rules (for example "robot renderings stay in `results/`", "runs over 10 minutes need approval");
-- the module table and one entry per module (big question, transferable idea, read, experiments, build task, evidence, outcome, cost), citing sources;
-- the course map: `figures/course_map.png` drawn with `handson.flow_diagram` (stages left to right) through `lab run figures/make_course_map.py`, or a Mermaid block if Python plotting is unavailable.
+- the module table in three tracks: Module 01 is the **big picture** (the whole subject, run end to end); **core** modules cover the essential boxes in dependency order and end with the capstone; **bonus** modules hold the deeper or narrower topics, offered after the core;
+- one entry per module (track, place in the big picture, big question, primer fundamentals, transferable idea, read, experiments, build task, evidence, outcome, cost, bonus lessons), citing sources;
+- the course map: the big picture of the subject, one box per area, labelled with the modules that cover it. Draw `figures/course_map.png` with `handson.layer_diagram` (layered subjects, top to bottom) or `handson.flow_diagram` (pipelines and algorithms, left to right) through `lab run figures/make_course_map.py`, or a Mermaid block if Python plotting is unavailable. Let the script take a box to highlight: `plan-module` redraws it for each module's primer.
 
 Then pilot Module 01's main experiment with the course helpers (§ 6 of the method). Fix the plan if it does not show a visible change.
 
 ## 8. Hand over
 
 - `STATE.md`: course created (date), environment summary, next action "plan-module for Module 01".
-- Message to the learner (≤ 120 words plus the course map): the promise in one line, a table with one row per module (module · you will be able to · time), the total time, and how lessons work in one sentence (short card, one command, compare, tweak).
+- Message to the learner (≤ 120 words plus the course map): the promise in one line, a table with one row per core module (module · you will be able to · time), the total time, one line naming the optional bonus modules, and how the course works in one sentence (big picture first; each module a five-minute primer, then experiments: one command, compare, tweak).
 - End with: `▶ Next: reply "start" to begin Module 01 now, or later open a new session here and type teach-lesson continue.`
 - If they reply "start", use `plan-module` for Module 01.
 

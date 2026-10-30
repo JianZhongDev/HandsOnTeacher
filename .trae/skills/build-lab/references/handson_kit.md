@@ -45,7 +45,9 @@ Use it whenever the curves for several values of one setting compute in seconds.
 ```python
 ho.use_style()
 ho.flow_diagram([("Title", "subtitle"), ...], highlight=[i], highlight_tag="TODAY",
-                loop_label=None, edge_labels=None, title="", path=None)   # module and course maps
+                loop_label=None, edge_labels=None, title="", path=None)   # pipelines: module and course maps
+ho.layer_diagram([("Applications", "programs you run"), ("Operating system", "..."), ...],
+                 highlight=1, side_labels=["M02", "M03-M05", ...], title="", path=None)  # layered course maps
 ho.save_fig(fig, path)
 ho.COLORS, ho.SERIES
 ```

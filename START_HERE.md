@@ -32,9 +32,14 @@ Got a course someone shared (or exported)? Open it in your agent and type `start
 
 ## 2. The lesson loop
 
+The course runs top-down: Module 01 shows the whole subject running; each later module zooms into one part; optional bonus modules go deeper after the core.
+
 ```
  new agent session ──► teach-lesson continue
                             │
+                            ▼
+   Primer  (first lesson of a module) where it sits in the big picture + the fundamentals, 5 min
+                            │   reply "start"   (or "deeper <idea>" for more on any idea)
                             ▼
    Turn 1  module map + the experiment + lab command
                             │   you run:  ./lab.sh 03/L01   (or edit your_turn.py first)
@@ -68,6 +73,8 @@ Got a course someone shared (or exported)? Open it in your agent and type `start
 | A question about anything else in the course | new session: `ask <your question>` |
 | Shorter messages from now on | `faster` |
 | The math, a derivation, the design reasons, the source code | `math`, `deeper`, `why`, `source` |
+| More on a fundamental from the module primer | `deeper <idea>` |
+| An optional bonus lesson or module | `teach-lesson bonus` |
 | Skip a lesson | `skip` |
 | You have several courses | name it: `teach-lesson continue <course>` |
 | You must stop mid-lesson | `session-handoff pausing mid-lesson` |

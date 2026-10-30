@@ -8,16 +8,23 @@ Agent-facing notes, one page. Sources: <source>. Fill in during create-course; c
 |---|---|---|---|
 | | repo / document / web · primary / supporting / reference | | (where sources disagree, which one wins and why) |
 
-## Architecture of the primary codebase (4–8 boxes, in the order data or control flows)
+## Big picture of the subject (4–8 boxes; becomes the course map)
+
+The layers, stages or components of the knowledge itself, as an expert would draw them, whether or not the codebase covers them all. For a method or algorithm: its main steps as pseudocode.
+
+1. <box> — <what it does, in general terms> — codebase: <where it is shown, or "not covered">
+2.
+
+## Architecture of the primary codebase (4–8 boxes, in the order data or control flows; name the big-picture box each implements)
 
 1. <box> — <what it does> (`path/`)
 2.
 
 ## Concepts
 
-| Concept | General or specific | Where (code path, document page, URL) |
-|---|---|---|
-| | | |
+| Concept | General or specific | Big-picture box | Where (code path, document page, URL) |
+|---|---|---|---|
+| | | | |
 
 ## Experiment surfaces (change → observe, run time)
 

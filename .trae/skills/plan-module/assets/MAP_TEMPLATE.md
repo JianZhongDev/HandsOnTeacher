@@ -6,12 +6,15 @@
 
 <Two or three sentences: the process in the map, left to right, and why it matters beyond this codebase.>
 
+**Start with:** [the primer](PRIMER.md), the fundamentals in five minutes.
+
 ## Lessons
 
 | Lesson | Question you answer | What you change | What you see | Time | Status |
 |---|---|---|---|---|---|
 | L01 | | | | ~N min | planned |
 | L02 | | | | ~N min | planned |
+| Bonus | <a deeper question, offered after the core lessons> | | | ~N min | optional |
 
 **You can do afterwards:** <one sentence, in this codebase and elsewhere>.
 

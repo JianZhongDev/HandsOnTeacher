@@ -1,6 +1,6 @@
 ---
 name: explain-deeply
-description: Give depth on demand in a hands-on course - a formula or derivation, an algorithm step by step, the reasons behind a design decision, or a walkthrough of the codebase's source - so a beginner can follow every step. Use when the learner types math, deeper, why or source, and for the folded details block of a lesson card.
+description: Give depth on demand in a hands-on course - a formula or derivation, an algorithm step by step, more on a fundamental idea from a module primer, the reasons behind a design decision, or a walkthrough of the codebase's source - so a beginner can follow every step. Use when the learner types math, deeper, deeper <idea>, why or source, and for the folded details block of a lesson card.
 ---
 
 # Explain in depth
@@ -27,6 +27,16 @@ For a large computation, work one small complete case and say it is a small case
 3. Trace one small concrete input through every step in a table: step · state before · operation · state after.
 4. What stored state (tables, buffers, caches) holds between steps, and when it is reset.
 5. Where it can go wrong: edge cases, and what the lab would show if they happened.
+
+## `deeper <idea>`: a fundamental from a module primer
+
+The learner wants the general concept, not yet this codebase's code.
+
+1. The idea in one sentence, and where it sits on the course map.
+2. The problem it solves, and how it works in general: a diagram or pseudocode under 20 lines; the classic alternatives.
+3. One small worked example, traced or computed step by step.
+4. Where the codebase implements it (file, a short quote) and which lesson makes it visible.
+5. Where to read more: a chapter, paper or doc page from `materials/text/`, cited by page.
 
 ## `why`: a design decision
 

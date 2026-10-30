@@ -9,7 +9,7 @@ Files are the only memory between sessions. Keep them short and accurate.
 
 ## 1. `courses/<course>/STATE.md` (rewrite the "Now" section; the file stays under about 40 lines)
 
-- Active module and lesson, and the lesson status (planned / ready / delivered / learner ran lab / finished / skipped).
+- Active module and lesson, whether the module's primer was delivered, and the lesson status (planned / ready / delivered / learner ran lab / finished / skipped). Bonus work: say so, and keep the next core action.
 - **Next action:** one concrete sentence, for example "Deliver 03/L02: card and lab are ready and tested", or "plan-module for Module 04".
 - Open learner questions, verbatim if short.
 - History does not go here; it goes in NOTES.
@@ -36,7 +36,7 @@ Files are the only memory between sessions. Keep them short and accurate.
 
 ## Tell the learner
 
-End with `✅ Progress saved.` and a `▶ Next:` line. After a finished lesson: `close this session, start a new one in this folder, and type teach-lesson continue`. After a pause: `next time, start a new session and type teach-lesson continue; it resumes at <turn>`. After the last module: suggest the capstone review or a new course.
+End with `✅ Progress saved.` and a `▶ Next:` line. After a finished lesson: `close this session, start a new one in this folder, and type teach-lesson continue`. After a pause: `next time, start a new session and type teach-lesson continue; it resumes at <turn>`. After the capstone (the last core module): offer the bonus modules from `COURSE.md` in one line, or the capstone review, or a new course.
 
 ## Rules
 

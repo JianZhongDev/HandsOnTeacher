@@ -13,7 +13,7 @@ The learner reads every word you write. Make it cheap to read.
 7. **Numbers only when they matter**, rounded (1.2 s, not 1.18432 s).
 8. **Everyday words.** "falls" not "terminates via orientation condition"; "how often" not "frequency of occurrence".
 9. **Active voice, present tense.** "The penalty lowers the score", not "a reduction in score is produced".
-10. **Cut 40%** after drafting. Then check the word budget (card ≤ 200, chat turn ≤ 120).
+10. **Cut 40%** after drafting. Then check the word budget (card ≤ 200, primer ≤ 250, chat turn ≤ 120).
 
 ## Before → after
 
@@ -47,6 +47,19 @@ After:
 
 > Both controllers fall within 1.4 s. Neither has learned to walk yet: 5 training updates is far too few.
 
+**Introducing a module.** Before: the details come first.
+
+> Module 05. `scheduler.c` loops over `proc_table`, skips entries whose `state != RUNNABLE`, and calls `swtch(&cpu->ctx, &p->ctx)`. Change `TICK_MS` in `param.h` and run `lab 05/L01`.
+
+After: the place in the big picture, then the general ideas; the code comes in the lessons.
+
+> *(course map, operating system box highlighted)* Inside the operating system box: many programs share one CPU.
+> - **Scheduler:** decides which ready program runs next.
+> - **Time slice:** how long a program runs before the scheduler may switch.
+> - **Context switch:** saving one program's registers and loading another's; it costs time.
+>
+> L01: change the time slice and watch response time and throughput trade off.
+
 **Opening a lesson.** Before: three paragraphs on the history and motivation of caching, then the lab command at the end.
 
 After:
@@ -75,8 +88,25 @@ Try:   `lab <MM>/L<nn> knob=value` → <what changes>
 <sub>Sources: ... · New terms: ... · Transfers to: ...</sub>
 ````
 
+## Module primer shape (≤ 250 words of prose)
+
+````
+# 03 primer — Title
+![where this module sits](figures/big_picture.png)
+One sentence: which box of the course map, what goes in and what comes out.
+
+- **General idea 1**: one or two plain sentences, true beyond this codebase.
+- **General idea 2**: ...
+- **General idea 3**: ...
+
+(optional concept schematic; optional one-command demo under a minute)
+**In the lessons:** L01 shows idea 1; L02 ideas 2 and 3.
+<sub>More on any idea: deeper <idea> · Sources: ...</sub>
+````
+
 ## Chat turn shape (≤ 120 words)
 
+- Primer (a module's first message, ≤ 200 words): the course map with this box highlighted, one placing sentence, the fundamentals as bullets, the lesson table.
 - Turn 1: map image, one sentence of context, the command, what to watch.
 - Turn 2: their result (picture), 2–3 sentences on what it shows, 1–2 things to try.
 - Turn 3: two-bullet takeaway, one transfer line, `✅ Progress saved`.
