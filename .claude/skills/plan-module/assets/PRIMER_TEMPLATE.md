@@ -2,7 +2,7 @@
 
 ![Where this module sits in the course](figures/big_picture.png)
 
-<ONE sentence: which box of the course map this is, what it receives and what it hands on. Module 01: the whole map.>
+🎯 **This module: <the topic, by its general name>.** <One or two plain sentences: what it does, which box of the course map it is, what it receives and what it hands on. Module 01: the whole map.>
 
 ## The fundamentals
 

@@ -12,7 +12,7 @@ Agent:  6 modules, about 5 hours. Module 01: run the cache under real load and w
 ## What learning feels like
 
 - **Big picture first.** Module 01 shows the whole subject as a few boxes and runs it end to end. Each later module zooms into one box: a five-minute primer on the general fundamentals, then experiments with the codebase. Deeper topics come last, as optional bonus modules.
-- **One experiment per lesson, 20–40 minutes.** Each teaches 2–4 related ideas. A lesson card has at most 200 words; the rest is doing.
+- **One experiment per lesson, 20–40 minutes.** Each teaches 2–4 related ideas. A lesson card opens with what it teaches and has at most 300 words; the rest is doing.
 - **You see consequences, not numbers.** One run compares several settings side by side: what the program outputs, how fast it is, when it breaks.
 - **You build first, then compare.** For design topics you write your own small version, run it next to the codebase's, then learn why the authors chose theirs.
 - **Transferable first.** Each idea is named in general terms, shown in the codebase, and linked to where else it applies.

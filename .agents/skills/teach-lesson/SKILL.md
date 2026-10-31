@@ -14,14 +14,14 @@ A lesson is **one experiment** (20–40 minutes of doing) that teaches 2–4 rel
 2. Write in `NOTES.md` (not to the learner): the experiment's question, the 2–4 ideas, the transferable idea, and what you leave out.
 3. Design the experiment so a **change shows its consequence in behavior** (rule 4). If the topic is a design choice, include a `your_turn` file (rule 5). Build it with `build-lab`. Check facts in the codebase checkouts (read-only) and in `materials/text/`; cite documents by name and page in the Sources line.
 4. **Run it** and look at every output. It must finish within the time stated on the card on this machine.
-5. Write `lessons/L<nn>-<name>/LESSON.md` from [assets/LESSON_TEMPLATE.md](assets/LESSON_TEMPLATE.md). Prose ≤ 200 words; derivations and source details go in the folded block.
+5. Write `lessons/L<nn>-<name>/LESSON.md` from [assets/LESSON_TEMPLATE.md](assets/LESSON_TEMPLATE.md). It opens with the 🎯 **Today** intro: the topic by its general name and what it does, in one to three plain sentences, before any command or code. Prose ≤ 300 words; spend the words on understanding (the intro, what the lab compares, why the result comes out as it does), not on procedure. Derivations and source details go in the folded block.
 6. Run `python tools/lesson_stats.py <path to LESSON.md>`, then the `review-lesson` checklist. Fix until both pass.
 
-## 2. Deliver: three short turns (≤ 120 words each, one picture or code block)
+## 2. Deliver: three short turns (≤ 120 words each, turn 1 ≤ 160; one picture or code block)
 
 Write in the learner's language. `<launcher>` is `./lab.sh` or `.\lab` (from `course.json`), run in the course folder. Write skill names the way the learner's agent expects (`$name` in Codex, `/name` in Claude Code, plain elsewhere).
 
-**Turn 1. Start doing.** Module map image + one sentence of context, naming the primer idea this experiment makes visible + the experiment in one or two lines of code + the command and how long it takes + what to watch.
+**Turn 1. Say what it teaches, then start doing.** The 🎯 **Today** intro from the card (topic and what it does, one to three sentences) + module map image + one sentence of context, naming the primer idea this experiment makes visible + the experiment in one or two lines of code + the command and how long it takes + what to watch.
 `▶ Next: run <launcher> <MM>/L<nn> (about N min), then reply "I ran it" (or "run it for me").`
 
 **Turn 2. Read the result together.** Show their result (side-by-side picture or comparison table). Two or three sentences: what it shows and why. Offer 1–2 tweaks, each with what to watch, including an edit to `your_turn` when the lab has one.

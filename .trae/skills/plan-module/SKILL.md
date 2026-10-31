@@ -16,7 +16,7 @@ Every module goes **whole → fundamentals → experiments**: where it sits in t
 2. **Where it sits.** Redraw the course map with this module's box highlighted into `figures/big_picture.png` (re-run the course's `figures/make_course_map.py` with a highlight; for Module 01, highlight nothing or every box in turn).
 3. **Big question** in plain words, and the **process** inside this box as 4–6 boxes for the module map (`handson.flow_diagram`, or `handson.layer_diagram` for layers; one image per lesson with that lesson's boxes highlighted; keep the script in `figures/`). If plotting is not available, use a Mermaid flowchart.
 4. **Write the primer** (`PRIMER.md`, ≤ 250 words of prose):
-   - one sentence placing the module: which box of the course map, what it receives and what it hands on;
+   - the 🎯 **This module** intro, one or two sentences: the topic by its general name, what it does, which box of the course map, what it receives and what it hands on;
    - **3–5 fundamental ideas** in general, textbook terms, most fundamental first, one or two plain sentences each. They must hold beyond this codebase ("a scheduler decides which ready program runs next"), not describe it ("`sched.c` picks from `runq`");
    - one concept picture when it saves reading: a layer stack, a timeline, a data layout (`make-visual`), labelled as a schematic;
    - optionally one command under a minute that shows the mechanism running (`lab run ...`): the doing-first part of the primer;
@@ -32,6 +32,6 @@ Every module goes **whole → fundamentals → experiments**: where it sits in t
 6. **Bonus lessons:** list the module entry's 1–2 deeper experiments as "Bonus" rows in `MAP.md` (status `optional`). Do not build them now; `teach-lesson bonus` builds one on request.
 7. **Transfer:** name the general idea of each lesson and two places it appears outside this codebase.
 8. **Check feasibility:** the knobs exist, the run fits the budget, the effect is large enough to see. If unsure, run a quick pilot. Run `python tools/lesson_stats.py <module folder>` (checks the primer's budget) and the `review-lesson` checklist on the primer.
-9. **Deliver the primer** (≤ 200 words, up to two pictures: `big_picture.png` and the concept picture): one placing sentence, the big question in one line, the fundamentals as bullets, and a table with one row per core lesson (question · what you'll change · what you'll see). End with `▶ Next: reply "start" to begin L01, or type deeper <idea> for more on any idea.`
+9. **Deliver the primer** (≤ 200 words, up to two pictures: `big_picture.png` and the concept picture): the 🎯 intro, the big question in one line, the fundamentals as bullets, and a table with one row per core lesson (question · what you'll change · what you'll see). End with `▶ Next: reply "start" to begin L01, or type deeper <idea> for more on any idea.`
 
 Planning detail (rejected ideas, feasibility notes, deferred topics) goes in `NOTES.md` and `TODO.md`, not in the primer. Update the module's status in `COURSE.md` to "planned", and record in `STATE.md` that the primer was delivered.

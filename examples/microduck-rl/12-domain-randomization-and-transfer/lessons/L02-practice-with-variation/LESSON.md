@@ -1,5 +1,7 @@
 # 12.L02 Does practising with variation make it robust?
 
+🎯 **Today: domain randomization.** A policy trained on one exact simulated robot learns to rely on that robot's battery, floor and timing, so it breaks on the real one. Domain randomization trains it on many slightly different robots instead, so no single version can be relied on.
+
 ![Module map](../../figures/map_L02.png)
 
 L01 found where the trained policy breaks. Now you choose what it practises on, and test whether that helps.

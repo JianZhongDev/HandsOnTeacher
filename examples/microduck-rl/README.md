@@ -35,7 +35,7 @@ Cost: ~4 min and ~15 min on an NVIDIA GPU; one shared 10-minute policy, cached
 Bonus lessons: system identification (measure the real robot's parameters to set the ranges)
 ```
 
-The module that came out of it: [MAP.md](12-domain-randomization-and-transfer/MAP.md), and one finished lesson card: [12.L02](12-domain-randomization-and-transfer/lessons/L02-practice-with-variation/LESSON.md) with its [your_turn.py](12-domain-randomization-and-transfer/lessons/L02-practice-with-variation/your_turn.py). The card is 176 words; everything else is in the lab's output and the folded details.
+The module that came out of it: [MAP.md](12-domain-randomization-and-transfer/MAP.md), and one finished lesson card: [12.L02](12-domain-randomization-and-transfer/lessons/L02-practice-with-variation/LESSON.md) with its [your_turn.py](12-domain-randomization-and-transfer/lessons/L02-practice-with-variation/your_turn.py). The card is 222 words, opening with what it teaches; everything else is in the lab's output and the folded details.
 
 ## A lightning cut (illustrative)
 
@@ -56,7 +56,7 @@ Bonus modules, offered after the capstone: kinematics derivations, tabular RL, P
 
 | First version | Fix (now a rule) |
 |---|---|
-| Lesson pages of 700–1,000 words | card ≤ 200 words of prose; depth folded or on request |
+| Lesson pages of 700–1,000 words | card ≤ 300 words of prose, opening with what it teaches; depth folded or on request |
 | Labs printed numbers ("the reward changed by 0.3") | compare settings side by side and show what the robot does |
 | Five lessons for one module, one small idea each | one 20–40 minute experiment teaches 2–4 ideas; 2–3 lessons per module |
 | Learners read about designs | build your own version first, then compare with the codebase's |

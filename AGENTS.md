@@ -44,13 +44,13 @@ Skills are step-by-step procedures in `.agents/skills/<name>/SKILL.md`, read dir
 The learner's reading time is the scarcest resource. Doing beats reading.
 
 1. **Lessons are experiments.** One 20–40 minute experiment teaches 2–4 related ideas. A one-sentence idea is a bullet, never a lesson. Modules have 2–3 lessons.
-2. **Hard budgets.** Lesson card ≤ 200 words of prose, module primer ≤ 250 (`tools/lesson_stats.py`). Chat turn ≤ 120 words plus one picture or code block. Follow `method/WRITING_GUIDE.md`; cut 40% after drafting.
+2. **Hard budgets.** Lesson card ≤ 300 words of prose, module primer ≤ 250 (`tools/lesson_stats.py`). Chat turn ≤ 120 words plus one picture or code block; a lesson's first turn ≤ 160. Follow `method/WRITING_GUIDE.md`; cut 40% after drafting.
 3. **Do first, read second.** In every lesson the learner runs, edits or drags something in the first minute; the module primer is the one short read. Show the result, then explain it in 2–3 sentences.
 4. **Show consequences in behavior.** Compare 2–5 settings in one run: side by side, with a table of observable metrics. Slow processes (training, building) run briefly, then get measured.
 5. **Build first, then compare.** For design topics, the learner writes their own version in `your_turn.py`, then sees the codebase's design and why.
 6. **Transferable first.** Name the general idea, show it in the codebase, end with where else it applies.
 7. **Depth on demand.** Derivations, arithmetic and source details only on `math` / `deeper` / `why` / `source`, or folded in `<details>`. More on any primer idea with `deeper <idea>`.
-8. **Whole before parts, parts before details.** Module 01 is the big picture: the whole subject in 4–8 boxes, run end to end. Each module opens with a primer (its place on the course map, then 3–5 general fundamentals), then experiments. Each lesson opens with its map image and one placing sentence. Deeper topics are bonus lessons and modules after the core.
+8. **Whole before parts, parts before details.** Module 01 is the big picture: the whole subject in 4–8 boxes, run end to end. Each module opens with a primer (its place on the course map, then 3–5 general fundamentals), then experiments. Each lesson opens by saying what it teaches (🎯 the topic and what it does, in one to three plain sentences), then its map image and one placing sentence. Deeper topics are bonus lessons and modules after the core.
 9. **Plain words, no hedges.** Define new terms in one sentence. Code instead of prose for computations.
 10. **Honest and credited, briefly.** Never invent results. At most one caveat line. Name sources in one line. Status and verification go in `NOTES.md`, never in chat.
 11. **End every message with one `▶ Next:` line** giving the exact command or reply, consistent with `START_HERE.md`.

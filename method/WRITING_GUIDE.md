@@ -13,7 +13,7 @@ The learner reads every word you write. Make it cheap to read.
 7. **Numbers only when they matter**, rounded (1.2 s, not 1.18432 s).
 8. **Everyday words.** "falls" not "terminates via orientation condition"; "how often" not "frequency of occurrence".
 9. **Active voice, present tense.** "The penalty lowers the score", not "a reduction in score is produced".
-10. **Cut 40%** after drafting. Then check the word budget (card ≤ 200, primer ≤ 250, chat turn ≤ 120).
+10. **Cut 40%** after drafting. Then check the word budget (card ≤ 300, primer ≤ 250, chat turn ≤ 120, a lesson's first turn ≤ 160).
 
 ## Before → after
 
@@ -60,30 +60,35 @@ After: the place in the big picture, then the general ideas; the code comes in t
 >
 > L01: change the time slice and watch response time and throughput trade off.
 
-**Opening a lesson.** Before: three paragraphs on the history and motivation of caching, then the lab command at the end.
+**Opening a lesson.** Two failures: three paragraphs on history and motivation before anything runs, or the opposite, straight into the details with no word on what the lesson is about:
 
-After:
+> Run `lab 05/L01 cfa=rggb method=bilinear,malvar`. Compare `zipper.png` and the PSNR table.
 
+After: one to three sentences on what it teaches, then the command.
+
+> 🎯 **Today: demosaicing.** A camera sensor records only one color per pixel, in a Bayer pattern of red, green and blue. Demosaicing fills in the two missing colors at every pixel to make a full-color image.
 > ```bash
-> lab 03/L01            # same 1,000 requests with no cache, LRU, and your policy
+> lab 05/L01            # the same raw image through two demosaicing methods
 > ```
-> Watch `latency.png`: which policy keeps the slow requests rare? Then open `your_turn.py`.
+> Watch `zipper.png`: which method leaves colored fringes along sharp edges?
 
-## Lesson card shape (≤ 200 words of prose)
+## Lesson card shape (≤ 300 words of prose)
 
 ````
 # 03.L01 Title as a question
+🎯 Today: <topic>. One to three plain sentences: what it is, what problem it solves, what goes in and out.
 ![map](../../figures/map_L01.png)
 One sentence: where this sits and what you'll find out.
 
 ```python
 # the experiment, 5-15 lines the learner can read and edit
 ```
+One or two sentences: what the lab compares.
 
 🔧 Run: `lab <MM>/L<nn>`  (about N min)   Watch: <one thing>
 Try:   `lab <MM>/L<nn> knob=value` → <what changes>
 
-**Takeaway:** one or two sentences.
+**Takeaway:** two to four sentences: the ideas, and why the result came out this way.
 <details><summary>math · why · source</summary> ... depth on demand ... </details>
 <sub>Sources: ... · New terms: ... · Transfers to: ...</sub>
 ````
@@ -93,7 +98,7 @@ Try:   `lab <MM>/L<nn> knob=value` → <what changes>
 ````
 # 03 primer — Title
 ![where this module sits](figures/big_picture.png)
-One sentence: which box of the course map, what goes in and what comes out.
+🎯 This module: <topic>. One or two sentences: what it does, which box of the course map, what goes in and what comes out.
 
 - **General idea 1**: one or two plain sentences, true beyond this codebase.
 - **General idea 2**: ...
@@ -106,8 +111,8 @@ One sentence: which box of the course map, what goes in and what comes out.
 
 ## Chat turn shape (≤ 120 words)
 
-- Primer (a module's first message, ≤ 200 words): the course map with this box highlighted, one placing sentence, the fundamentals as bullets, the lesson table.
-- Turn 1: map image, one sentence of context, the command, what to watch.
+- Primer (a module's first message, ≤ 200 words): the course map with this box highlighted, the 🎯 intro, the fundamentals as bullets, the lesson table.
+- Turn 1 (≤ 160 words): the 🎯 intro (what this lesson teaches), map image, one sentence of context, the command, what to watch.
 - Turn 2: their result (picture), 2–3 sentences on what it shows, 1–2 things to try.
 - Turn 3: two-bullet takeaway, one transfer line, `✅ Progress saved`.
 

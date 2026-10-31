@@ -14,7 +14,7 @@
 
 ## What a lesson feels like
 
-- One experiment of 20–40 minutes that teaches 2–4 related ideas; the lesson card has at most 200 words.
+- One experiment of 20–40 minutes that teaches 2–4 related ideas; the lesson card opens with what it teaches and has at most 300 words.
 - One run compares several settings side by side, so you see what a change does.
 - For design topics, you write your own small version first, then compare it with the codebase's.
 - Type `math`, `deeper`, `why` or `source` for depth; `faster` for shorter messages.
