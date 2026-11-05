@@ -7,7 +7,7 @@
 
 Modules:
     handson.labkit   lab_config: key=value settings from the command line, one results folder per setting
-    handson.compare  print_table, side_by_side (Pillow), timed
+    handson.compare  print_table, reading_guide, side_by_side (Pillow), timed
     handson.explore  slider_page: a self-contained HTML page with a slider, for instant what-if exploration
     handson.viz      use_style, save_fig, flow_diagram (maps), layer_diagram (layered course maps); needs matplotlib
     handson.colors   COLORS, SERIES
@@ -17,7 +17,7 @@ side_by_side needs Pillow; each is imported only when used.
 """
 
 from handson.colors import COLORS, SERIES
-from handson.compare import print_table, side_by_side, timed
+from handson.compare import print_table, reading_guide, side_by_side, timed
 from handson.explore import slider_page
 from handson.labkit import LabRun, lab_config
 
@@ -31,5 +31,5 @@ def __getattr__(name):
     raise AttributeError(name)
 
 
-__all__ = ["lab_config", "LabRun", "print_table", "side_by_side", "timed", "slider_page",
+__all__ = ["lab_config", "LabRun", "print_table", "reading_guide", "side_by_side", "timed", "slider_page",
            "use_style", "save_fig", "flow_diagram", "layer_diagram", "COLORS", "SERIES"]

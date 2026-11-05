@@ -17,6 +17,16 @@ Every pattern follows the same shape: **one run, 2–5 settings, side by side, a
 | **Systems / concurrency / networking** | thread count, buffer sizes, timeouts, injected faults | throughput, latency, deadlocks, error rates | throughput vs setting curve |
 | **Algorithms / data structures** | input size and shape, the algorithm variant | operations count, time, correctness | scaling plot (size vs time) |
 
+## Real data first
+
+Experiments use real data that suits the topic, found by searching for the field's standard benchmarks and the codebase's own examples (record source, licence, size, checksum; ask the learner before downloading):
+
+- vision and SLAM: EuRoC MAV, KITTI, TUM RGB-D / TUM-VI sequences; speech and audio: LibriSpeech; NLP: standard corpora on the Hugging Face hub; recommenders: MovieLens; tabular ML: UCI or Kaggle sets; web services: the codebase's own load-test examples and public traces; databases: TPC-H / public sample databases; compilers: the codebase's test suite and real open-source files. These are examples; search for the right one.
+- Use a short real excerpt when the whole set is slow (the first 60 seconds of a sequence, 10,000 rows), and say so.
+- Compare against a **reference**: ground truth, a published result, or a simple baseline. Metrics use the field's standard names and units.
+- **Synthetic data** only for what real data cannot give (known ground truth for a controlled ablation, an injected fault). It comes after a real-data run, is labelled synthetic in the first line, and never stands in for the real system.
+- **The real system, not a re-implementation.** If the real codebase is hard to run (old OS or libraries, ROS, GPU), solve that in `setup-environment` (container, WSL, port); do not teach with a toy copy.
+
 ## Big-picture labs (Module 01)
 
 Module 01 shows the whole subject working, one box of the course map at a time. Three patterns work in almost any codebase:
@@ -25,7 +35,7 @@ Module 01 shows the whole subject working, one box of the course map at a time. 
 - **Change or switch off one stage** and watch the effect downstream: no cache, an optimizer pass disabled, a robot without its controller.
 - **Time each stage** of one end-to-end run: one bar per box shows where the time goes.
 
-Label every output with the box of the course map it belongs to.
+Label every output with the box of the course map it belongs to, and give each a reading guide (what it is, unit, reference, what good looks like). The end-to-end run of the real system on real data is the Module 01 experiment, never a simplified model of it.
 
 ## Ways to change behavior without editing the codebase
 
@@ -39,7 +49,7 @@ The codebase is read-only for lessons. In order of preference:
 
 ## Making it fast
 
-- Use the smallest input that still shows the effect: a 100-row table, a 5-second simulation, a 2-layer model.
+- Use the smallest *real* input that still shows the effect: a 100-row sample of the real table, a 60-second excerpt of the real sequence. Runs of up to 10 minutes are fine.
 - Cache slow, unchanged steps (a trained model, a built index) in the course's `_shared/` or the lab's `cache/`, keyed by everything that affects them.
 - Run settings in parallel when the codebase supports it (vectorized environments, process pools).
 - If an effect only appears after a long run, either pre-compute once and cache it, or ask the learner before a run over 10 minutes.

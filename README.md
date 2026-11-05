@@ -11,12 +11,14 @@ Agent:  6 modules, about 5 hours. Module 01: run the cache under real load and w
 
 ## What learning feels like
 
-- **Big picture first.** Module 01 shows the whole subject as a few boxes and runs it end to end. Each later module zooms into one box: a five-minute primer on the general fundamentals, then experiments with the codebase. Deeper topics come last, as optional bonus modules.
-- **One experiment per lesson, 20–40 minutes.** Each teaches 2–4 related ideas. A lesson card opens with what it teaches and has at most 300 words; the rest is doing.
-- **You see consequences, not numbers.** One run compares several settings side by side: what the program outputs, how fast it is, when it breaks.
+- **Big picture first, as a guided tour.** Module 01 walks through the whole subject box by box, explaining each part's algorithm with a diagram, then runs the real system end to end. Each later module zooms into one box: a primer that explains its key algorithm, then experiments with the codebase. Deeper topics come last, as optional bonus modules.
+- **Real code on real data.** Experiments run the actual codebase on public datasets the agent finds for you, never on toy models or random numbers.
+- **Understand, predict, run, read together.** Each lesson (20–40 minutes, 2–4 ideas) explains the mechanism with a picture, tells you what every output means, asks what you expect, then reads the result with you.
+- **You see consequences, not numbers.** One run compares several settings side by side against a reference: ground truth, a baseline or a published result.
+- **You drive.** Ask anything at any time: why, what a figure means, `explain again`, `show me a picture`, `slower`. The agent will not move on while you are unsure.
 - **You build first, then compare.** For design topics you write your own small version, run it next to the codebase's, then learn why the authors chose theirs.
 - **Transferable first.** Each idea is named in general terms, shown in the codebase, and linked to where else it applies.
-- **Depth when you ask.** Type `math`, `deeper`, `why` or `source` for derivations and code walkthroughs, `deeper <idea>` for more on a fundamental; `faster` for even shorter messages.
+- **Depth when you ask.** Type `math`, `deeper`, `why` or `source` for derivations and code walkthroughs, `deeper <idea>` for more on a fundamental; `slower` or `faster` for pace.
 - **Your progress is saved in files**, so you can stop any time and any agent can continue.
 
 ## Quick start

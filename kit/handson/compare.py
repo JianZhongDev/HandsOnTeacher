@@ -83,3 +83,21 @@ def timed() -> Iterator[_Timer]:
         yield timer
     finally:
         timer.seconds = time.perf_counter() - start
+
+
+def reading_guide(items: dict[str, str], title: str = "How to read this", path: str | Path | None = None) -> str:
+    """Print (and optionally save) a short legend before the results: one line per metric, axis, line or colour.
+
+    reading_guide({
+        "ATE RMSE (m)": "typical distance between estimated and true position; lower is better; compared with ground truth",
+        "blue line": "estimated trajectory; the dashed black line is the ground truth",
+    }, path=run.out / "READING_GUIDE.txt")
+
+    Labs call this before print_table so that no number or curve appears unexplained.
+    """
+    lines = [title, "-" * len(title)] + [f"  {name}: {meaning}" for name, meaning in items.items()] + [""]
+    text = "\n".join(lines)
+    print(text)
+    if path is not None:
+        Path(path).write_text(text, encoding="utf-8")
+    return text

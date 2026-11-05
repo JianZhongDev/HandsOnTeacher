@@ -32,7 +32,7 @@ Files are the only memory between sessions. Keep them short and accurate.
 - `GLOSSARY.md`: new terms, one plain line each, plus the lesson where introduced.
 - `<module>/TODO.md`: parked side topics and unfinished work.
 - `FEEDBACK_LOG.md`: one dated line if the learner corrected the teaching.
-- `LEARNER.md` → Preferences: lasting preferences you learned (one dated line each), such as `faster` or a language change.
+- `LEARNER.md` → Preferences: lasting preferences you learned (one dated line each), such as `faster` or a language change. Also record in the module's `NOTES.md` what the learner predicted, asked and answered (never claim mastery), so the next session can pick up unanswered questions.
 
 ## Tell the learner
 

@@ -33,10 +33,12 @@ Status values: not started (bonus: optional) → planned (MAP.md and PRIMER.md w
 **Track:** big picture
 **Place in the big picture:** the whole course map
 **Big question:** <plain words>
-**Primer (3–5 fundamentals):** <each box of the course map in one line, and what flows between them; for a method, its summary as pseudocode>
+**Primer (guided tour):** <whole-method pseudocode, then one stop per box: input/output with a real example, the box's algorithm in plain words, a diagram, its design idea>
+**Key algorithm (walked through in the primer):** <name; 3-6 line summary; source>
+**Data:** <real dataset and excerpt used; reference results>
 **Transferable idea:** <general concept or skill> — also seen in <two other places>
 **Read (agent):** <files in the codebases; document sections or pages; URLs>
-**Experiments (2–3):** <run it end to end; trace one input through every box; change one stage> → <what they see>; ...
+**Experiments (2–3):** <run the REAL system end to end on the REAL dataset and find every box in its outputs; change one stage and watch downstream> → <what they see>; ...
 **Build task:** <what they write in your_turn, or "none">
 **Evidence:** <what the learner produces that shows the outcome: a plot, a working variant, a measured comparison>
 **After this module you can:** <one demonstrable outcome>
@@ -48,6 +50,8 @@ Status values: not started (bonus: optional) → planned (MAP.md and PRIMER.md w
 **Place in the big picture:** <which box; what it receives and what it hands on>
 **Big question:** <plain words>
 **Primer (3–5 fundamentals):** <general ideas, in textbook terms, needed before the experiments>
+**Key algorithm (walked through in the primer):** <name; 3-6 line summary; source>
+**Data:** <real dataset and excerpt used; reference results>
 **Transferable idea:** <general concept or skill> — also seen in <two other places>
 **Read (agent):** <files in the codebases; document sections or pages; URLs>
 **Experiments (2–3):** <what the learner changes> → <what they see>; ...

@@ -8,7 +8,7 @@ run = ho.lab_config({"<knob>": 1.0, "size": 1000},
                     help={"<knob>": "<meaning, units>", "size": "<how much input, units>"})
 
 from your_turn import my_version          # the learner's design (a working default is provided)
-# from <codebase> import <the thing>      # the real codebase, read-only
+# from <codebase> import <the thing>      # the real codebase, read-only; run it on the real dataset from course.json
 
 
 def measure(variant) -> dict:
@@ -22,6 +22,10 @@ rows = {
     "codebase default": measure(lambda n: n),   # replace with the codebase's own version
     "your version": measure(my_version),
 }
+ho.reading_guide({
+    "<observable metric>": "<what it is, unit, what it is compared with, what good looks like>",
+    "time (s)": "wall-clock time of this variant on the same real input",
+}, path=run.out / "READING_GUIDE.txt")
 ho.print_table(rows)
 run.save_json("metrics.json", rows)
 

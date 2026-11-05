@@ -37,6 +37,8 @@ Courses can draw on several sources. Give each a role:
 Read, do not run everything. For code: README and docs, the dependency file (`pyproject.toml`, `package.json`, `Cargo.toml`, …), the CI workflow (the most reliable recipe for building and testing), entry points, examples, tests, configuration. For documents: table of contents first, then the sections that match the learner's outcomes. Where sources disagree (versions, terminology, recommended practice), record which one wins and why: newer, official, or matches the code that runs. Write the findings to the course's `SURVEY.md` (one page, from the template):
 
 - **Big picture of the subject in 4–8 boxes**: the layers, stages or components of the *knowledge itself*, as a textbook or an expert would draw them, whether or not the codebase implements them all. For "how a computer works": applications → operating system → drivers and hardware abstraction layer → hardware (CPU, memory, storage, devices). For an algorithm or method: its main steps as short pseudocode. Mark which boxes the codebase demonstrates. This becomes the course map.
+- **The key algorithm of each box**, in 3–6 plain lines, with its source (paper section, documentation page, file and function). Read the paper or doc and the code; do not write from memory. This is the raw material for the guided tour and the primers; a box you cannot explain yet is not surveyed.
+- **Real data and references**: search the web for the datasets the field evaluates this kind of system on (and the codebase's own examples). For each candidate record URL, licence, size, which boxes it exercises, and the published or ground-truth reference results. Choose one small primary dataset (and optionally a harder held-out one). Labs run on these; toy or random data is never the plan.
 - **Architecture of the primary codebase in 4–8 boxes**: the main flow of data or control, in plain words, and which big-picture box each part implements.
 - **Concepts it embodies**: the general ideas the code implements, each tagged *general* or *specific*, and the big-picture box it belongs to. Example: "domain randomization (general) via `vin_range` in the actuator config (specific)".
 - **Experiment surfaces**: places where a learner can change one thing and quickly see a different behavior. For each: what to change, what you observe, how long one run takes. See `method/LAB_PATTERNS.md`. This list decides what the course can teach hands-on.
@@ -45,7 +47,7 @@ Read, do not run everything. For code: README and docs, the dependency file (`py
 
 ## 3. Choose and order the modules
 
-1. **Big picture module (always Module 01).** It answers "what are the parts, and how do they work together?" Its primer is the course map: each box in one plain line, and what flows between them. For a method or algorithm, the primer is its summary as short pseudocode. Its experiments run the whole thing end to end and make each box visible: trace one request, input or instruction through every box, or switch one stage off or change it and watch what happens downstream. The learner sees the full loop running within 10 minutes of starting.
+1. **Big picture module (always Module 01): the guided tour.** It answers "what are the parts, how does each work, and how do they fit together?" Its primer is a tour: the method as short pseudocode, the course map, then **one stop per box** with the box's input and output (a real example), its core algorithm explained in plain words with a diagram, and the idea behind its design. No box is only named. Its experiments then **run the real system end to end on real data** and find each box in the outputs: trace real data through every stage, switch one stage off or change it and watch what happens downstream, time each stage. L01 is the real full run with every output explained; L02 changes one thing and shows the downstream effect. A toy model of the system is not an acceptable Module 01 experiment.
 2. **Core modules: one per essential box.** List the boxes of the big picture the learner needs for their outcomes. Each becomes a core module that answers one **big question** in plain words ("How does the OS share one CPU among many programs?", "Why does the trained robot fall on ice?") and teaches one general concept, shown through that part of the codebase. A large box may split into several modules (the OS box: scheduling, virtual memory, file systems); small boxes merge, or become primer ideas inside a neighbor.
 3. **Keep only modules that can be hands-on.** Each needs at least two experiment surfaces with a visible behavior change. A topic with no surface becomes a primer idea or a bullet inside another module.
 4. **Rank by value to the outcomes × how widely it transfers.** Keep the essentials as core until the course fits the time budget. Topics below the line become **bonus modules**, not cuts.
@@ -67,6 +69,8 @@ In `COURSE.md`, one entry per module, about 100–150 words, using these fields:
 **Place in the big picture:** <which box of the course map; what it receives and what it hands on>
 **Big question:** <plain words>
 **Primer (3–5 fundamentals):** <the general ideas needed before the experiments, in textbook terms, not codebase terms>
+**Key algorithm (walked through in the primer):** <name and 3-6 line summary; source>
+**Data:** <real dataset(s) and excerpt used; reference results>
 **Transferable idea:** <general concept or skill> — also seen in <2 other places>
 **Read (agent):** <code paths; document sections or pages; URLs>
 **Experiments (2–3):** <what the learner changes> → <what they see>; ...
@@ -81,8 +85,9 @@ Bonus module entries may stop after **Experiments** and **Cost**; `plan-module` 
 
 ## 5. Check before showing it
 
-- Module 01 is the big picture: the whole subject in 4–8 boxes, and an end-to-end run that shows each box. Something runs in front of the learner within 10 minutes of starting.
-- Every core module has a place on the course map, a primer of general fundamentals, a big question, a transferable idea and at least two experiments with a visible behavior change.
+- Module 01 is the big picture: the whole subject in 4–8 boxes, a tour stop that explains the algorithm of each box, and an end-to-end run of the **real system on real data** that shows each box.
+- Every core module has a place on the course map, a primer of general fundamentals with its key algorithm explained, a big question, a transferable idea, a named real dataset, and at least two experiments with a visible, measured behavior change against a reference.
+- No experiment depends on a toy model or random numbers; every output has a stated meaning.
 - Top-down order: no core module depends on an idea taught later, and no detail-level topic appears before the module that introduces its box. Details and side topics are bonus lessons or bonus modules, after the core.
 - No module is reading-only. No lesson is a single idea.
 - The course reaches every outcome from step 1, and the capstone uses most core modules.
@@ -91,7 +96,7 @@ Bonus module entries may stop after **Experiments** and **Cost**; `plan-module` 
 
 ## 6. Pilot the first experiment
 
-Before presenting the course, run the first module's main experiment surface once (a minute or two). If it does not show a visible change, fix the plan now: a course whose first experiment fails loses the learner.
+Before presenting the course, run Module 01's experiment once: **the real codebase on the real dataset, end to end** (a few minutes). Open the outputs and check that each is explainable in plain words and plausible against the reference. If the real system cannot run, or the outputs show nothing a newcomer could interpret, fix the plan or the environment now, or tell the learner what is blocking. Never fall back to a toy: a course whose first experiment is meaningless loses the learner.
 
 ## 7. A complete course: checklist
 

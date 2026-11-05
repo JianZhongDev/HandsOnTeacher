@@ -64,9 +64,19 @@ Once the course helpers exist (`create-course` step 6), point `CHECK` at `_share
 2. Time one run of the first experiment surface from `SURVEY.md`. Record timings in `course.json` (`timings`).
 3. If something only works partly (no GPU, no renderer, a missing service), record it in `course.json` (`machine.notes`) so lessons are sized for it.
 
+## 6b. The real system must run, on real data
+
+The course teaches the real codebase, so "ready" means **the real codebase runs on real data here**, not that a helper script runs.
+
+- **Real data.** Take the datasets from `SURVEY.md` (found by `create-course` step 4): the codebase's own examples and the field's standard public benchmarks. If none is recorded, search the web now (official dataset pages, the codebase's README, papers' evaluation sections) and choose one small sequence or sample that shows the topic and has **reference results** (ground truth or published numbers). Present the list to the learner **once**: name, source URL, licence, size, checksum if published. Download only after their yes into `courses/<course>/data/` and record each in `course.json` (`datasets`: name, url, license, size, sha256, which lessons use it). If a download is blocked (login, moved, offline), ask the learner to fetch it and say where to put it; offer the next-best real dataset.
+- **Hard-to-run codebases** (old operating systems or libraries, ROS, CUDA, simulators, proprietary tools): do not give up and do not swap in a toy. Try in this order, asking before system-wide changes: a container (Docker/Podman) with the codebase's own recipe or an image that already exists; WSL or a VM; a maintained port or fork (record the fork and why it still teaches the same method); building a minimal subset of the real code that runs the core algorithm on the real data. Run the real quickstart on the real data and keep its output.
+- **If none works**, stop and tell the learner in plain words what is blocking, the options (spend setup time, use a port, use another codebase, use a hosted notebook) and what each costs. Record the decision in `course.json` (`runtime.notes`). A course whose labs cannot run the real system must say so on its first page and in `COURSE.md`; it never presents toy labs as the real thing.
+
+The first run of the real system on real data is also the Module 01 end-to-end experiment: save its outputs (figures, trajectories, logs) for `plan-module`.
+
 ## 7. Record
 
-`course.json`: `sources` (for each: path, commit, license), `runtime` (kind, env, run, lab_file, check), `launcher` (unix, windows, windows_mode), `machine`, `timings`, `checked` (date), `ready: true`. Add a short "How to run it" section to `SURVEY.md`. Tell the learner the result in at most three lines, then return to the calling skill.
+`course.json`: `sources` (for each: path, commit, license), `datasets`, `runtime` (kind, env, run, lab_file, check, notes), `launcher` (unix, windows, windows_mode), `machine`, `timings`, `checked` (date), `ready: true` (only when 6b holds). Add a short "How to run it" section to `SURVEY.md`. Tell the learner the result in at most three lines, then return to the calling skill.
 
 ## Repair
 

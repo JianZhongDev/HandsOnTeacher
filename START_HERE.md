@@ -32,28 +32,31 @@ Got a course someone shared (or exported)? Open it in your agent and type `start
 
 ## 2. The lesson loop
 
-The course runs top-down: Module 01 shows the whole subject running; each later module zooms into one part; optional bonus modules go deeper after the core.
+The course runs top-down: Module 01 is a guided tour of the whole subject and runs the real system on real data; each later module zooms into one part, starting with an explanation of its key algorithm; optional bonus modules go deeper after the core. **Your questions are what make this work: interrupt whenever something is unclear.**
 
 ```
  new agent session ──► teach-lesson continue
                             │
                             ▼
-   Primer  (first lesson of a module) where it sits in the big picture + the fundamentals, 5 min
+   Primer  (first lesson of a module) where it sits, the fundamentals, and how its key algorithm works, with diagrams
                             │   reply "start"   (or "deeper <idea>" for more on any idea)
                             ▼
-   Turn 1  module map + the experiment + lab command
+   Turn 1  what it teaches + how it works (diagram)
+                            │   reply "go on" or ask anything
+                            ▼
+   Turn 2  the real data, the reading guide, your prediction, the command
                             │   you run:  ./lab.sh 03/L01   (or edit your_turn.py first)
                             ▼
-   Turn 2  read your results together + one or two tweaks
+   Turn 3  read your results together, piece by piece + one or two tweaks
                             │   you run:  ./lab.sh 03/L01 size=5000
                             ▼
-   Turn 3  two-line takeaway + where it applies elsewhere   (progress is saved)
+   Turn 4  takeaway + where it applies elsewhere   (progress is saved)
                             │
                             ▼
                 close the session; next lesson = new session
 ```
 
-- A lesson is one experiment of 20–40 minutes. Its card (`LESSON.md`) is short; details are folded, or ask for them.
+- A lesson is one experiment of 20–40 minutes on real data. Its card (`LESSON.md`) explains the mechanism and every output; further depth is folded, or ask for it.
 - Use **one new session per lesson**, opened in this folder. That keeps the agent focused.
 - Run labs from the course folder: `./lab.sh` on Linux and macOS, `.\lab` on Windows.
 
@@ -71,7 +74,9 @@ The course runs top-down: Module 01 shows the whole subject running; each later 
 | Finish the current lesson | `wrap up` |
 | A question about the current lesson | just ask in the same session |
 | A question about anything else in the course | new session: `ask <your question>` |
-| Shorter messages from now on | `faster` |
+| Slower, or shorter messages | `slower`, `faster` |
+| You do not understand something | `explain again`, `show me a picture`, or just ask why |
+| You predicted before running | `I ran it, I expected ...` |
 | The math, a derivation, the design reasons, the source code | `math`, `deeper`, `why`, `source` |
 | More on a fundamental from the module primer | `deeper <idea>` |
 | An optional bonus lesson or module | `teach-lesson bonus` |

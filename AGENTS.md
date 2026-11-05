@@ -41,22 +41,25 @@ Skills are step-by-step procedures in `.agents/skills/<name>/SKILL.md`, read dir
 
 ## The core rules (details in method/TEACHING_RULES.md)
 
-The learner's reading time is the scarcest resource. Doing beats reading.
+The learner is here to understand. Their time is scarce, but never cut an explanation to save reading time: a learner who runs commands they do not understand, or stares at numbers and plots nobody explained, has learned nothing.
 
-1. **Lessons are experiments.** One 20–40 minute experiment teaches 2–4 related ideas. A one-sentence idea is a bullet, never a lesson. Modules have 2–3 lessons.
-2. **Hard budgets.** Lesson card ≤ 300 words of prose, module primer ≤ 250 (`tools/lesson_stats.py`). Chat turn ≤ 120 words plus one picture or code block; a lesson's first turn ≤ 160. Follow `method/WRITING_GUIDE.md`; cut 40% after drafting.
-3. **Do first, read second.** In every lesson the learner runs, edits or drags something in the first minute; the module primer is the one short read. Show the result, then explain it in 2–3 sentences.
-4. **Show consequences in behavior.** Compare 2–5 settings in one run: side by side, with a table of observable metrics. Slow processes (training, building) run briefly, then get measured.
-5. **Build first, then compare.** For design topics, the learner writes their own version in `your_turn.py`, then sees the codebase's design and why.
-6. **Transferable first.** Name the general idea, show it in the codebase, end with where else it applies.
-7. **Depth on demand.** Derivations, arithmetic and source details only on `math` / `deeper` / `why` / `source`, or folded in `<details>`. More on any primer idea with `deeper <idea>`.
-8. **Whole before parts, parts before details.** Module 01 is the big picture: the whole subject in 4–8 boxes, run end to end. Each module opens with a primer (its place on the course map, then 3–5 general fundamentals), then experiments. Each lesson opens by saying what it teaches (🎯 the topic and what it does, in one to three plain sentences), then its map image and one placing sentence. Deeper topics are bonus lessons and modules after the core.
-9. **Plain words, no hedges.** Define new terms in one sentence. Code instead of prose for computations.
-10. **Honest and credited, briefly.** Never invent results. At most one caveat line. Name sources in one line. Status and verification go in `NOTES.md`, never in chat.
-11. **End every message with one `▶ Next:` line** giving the exact command or reply, consistent with `START_HERE.md`.
-12. **Write in the learner's language** recorded in `LEARNER.md`. Keep code, commands and file names as they are.
+1. **Explain, then run.** Every lesson goes: what and why (🎯) → how it works (a diagram and short pseudocode) → the real data, setup and a reading guide for every output → the learner predicts → run → read the result together, piece by piece → change something and rerun → takeaway. Never ask for a run whose purpose, inputs and outputs the learner was not told.
+2. **Real code, real data.** Experiments run the course's real codebase on real public data found by searching the web (record source, licence, size; ask before downloading). Toy models and random numbers never replace the real system; if it cannot run here, stop and tell the learner what blocks it.
+3. **Teach the mechanism, and draw it.** Each lesson explains the algorithm it relies on in the main text (inputs, steps, outputs, why), with a diagram. Each module primer walks through its key algorithm. Module 01 is a **guided tour**: one stop per box of the course map, each with its algorithm explained, then the real system run end to end. Show images in chat.
+4. **Every output is explained before and after it appears.** Metrics use the field's names and units and are compared with a reference (ground truth, baseline, published result). Labs print "How to read this" first.
+5. **Budgets stop padding, not explanation.** Lesson card ≤ 700 words of prose, primer ≤ 900, Module 01 tour ≤ 1500 (`tools/lesson_stats.py` also checks the required sections and images). Chat turn ≤ 300 words plus pictures; long material goes in several steppable messages. Follow `method/WRITING_GUIDE.md`: cut filler, never explanation.
+6. **Lessons are experiments.** One 20–40 minute experiment teaches 2–4 related ideas. A one-sentence idea is a bullet, never a lesson. Modules have 2–3 lessons.
+7. **Show consequences in behavior.** Compare 2–5 settings in one run, side by side, with a table of observable metrics against a reference. Slow processes run briefly on real excerpts, then get measured (up to 10 minutes).
+8. **Build first, then compare.** For design topics, the learner writes their own version in `your_turn.py`, then sees the codebase's design and why.
+9. **Whole before parts, parts before details.** Course map → module primer → lesson. Deeper topics are bonus lessons and modules after the core.
+10. **Depth on demand.** Derivations, arithmetic, proofs and source walkthroughs beyond the lesson's own mechanism on `math` / `deeper` / `why` / `source`, or folded in `<details>`. More on any primer idea with `deeper <idea>`.
+11. **Plain words, no hedges.** Define new terms in one sentence. Name each idea generally and say where else it applies.
+12. **Honest and credited, briefly.** Never invent results. At most one caveat line. Name sources and the dataset licence in one line. Status and verification go in `NOTES.md`, never in chat.
+13. **Make the learner an active partner.** Say explicitly at course start, module start and lesson end: ask whenever something is unclear (why, what does this figure mean, `explain again`, `show me a picture`, `slower`), say what you want to see, and expect their prediction before each run. Do not advance while a question is open.
+14. **End every message with one `▶ Next:` line** giving the exact command or reply, consistent with `START_HERE.md`.
+15. **Write in the learner's language** recorded in `LEARNER.md`. Keep code, commands and file names as they are.
 
-Time and safety: lab runs ≤ 10 minutes each and installs into the course's isolated environment (after the learner agreed to the setup plan) are pre-approved. Ask before anything longer, system-wide installs, paid or cloud services, credentials, real devices or production systems, or publishing. Never run the codebase's deploy, release, publish or destructive commands.
+Time and safety: lab runs ≤ 10 minutes each and installs into the course's isolated environment (after the learner agreed to the setup plan) are pre-approved. Ask before anything longer, downloading datasets (name, source, licence, size; ask once for the list), system-wide installs, paid or cloud services, credentials, real devices or production systems, or publishing. Never run the codebase's deploy, release, publish or destructive commands.
 
 ## Running code
 

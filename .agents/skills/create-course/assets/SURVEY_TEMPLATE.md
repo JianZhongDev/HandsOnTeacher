@@ -12,8 +12,14 @@ Agent-facing notes, one page. Sources: <source>. Fill in during create-course; c
 
 The layers, stages or components of the knowledge itself, as an expert would draw them, whether or not the codebase covers them all. For a method or algorithm: its main steps as pseudocode.
 
-1. <box> — <what it does, in general terms> — codebase: <where it is shown, or "not covered">
+1. <box> — <what it does, in general terms> — **key algorithm:** <3-6 lines> (source: <paper section / doc page / file>) — codebase: <where it is shown, or "not covered">
 2.
+
+## Real data and references (found by web search; labs run on these, never on invented numbers)
+
+| Dataset | URL | Licence | Size | Boxes it exercises | Reference results (ground truth / published) | Role |
+|---|---|---|---|---|---|---|
+| | | | | | | primary / held-out / harder |
 
 ## Architecture of the primary codebase (4–8 boxes, in the order data or control flows; name the big-picture box each implements)
 

@@ -5,7 +5,7 @@ description: Give depth on demand in a hands-on course - a formula or derivation
 
 # Explain in depth
 
-Depth is on demand (`method/TEACHING_RULES.md`, rule 8). The main lesson path shows only code, a one-line formula and its meaning. This skill is for when the learner asks, and for the `<details>` block of a card. Inside those, never cut steps.
+Depth beyond the lesson's own mechanism is on demand (`method/TEACHING_RULES.md`, rules 4 and 9). The main lesson path already explains the mechanism with a diagram; this skill goes further when the learner asks, and fills the `<details>` block of a card. Inside those, never cut steps, and draw a diagram or a worked table whenever the explanation has more than three steps (`make-visual`). Offer a picture first if the learner just says "I don't get it".
 
 The learner's difficulty is rarely the math or the code itself. It is **unexplained structure**: numbers before the formula, symbols with no meaning, steps with no purpose, files with no map.
 

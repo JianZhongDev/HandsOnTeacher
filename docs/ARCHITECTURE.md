@@ -56,7 +56,9 @@ sharing            └─ export-course (tools/export_course.py: standalone repo
 ## Design choices worth knowing
 
 - **Whole before parts, parts before details.** Module 01 is the big picture of the subject, run end to end; each core module zooms into one box and opens with a primer of general fundamentals; deeper topics are bonus lessons and modules after the core.
-- **Reading time is the scarcest resource.** Cards ≤ 300 words of prose and primers ≤ 250, each opening with a 🎯 line on what it teaches (checked by `tools/lesson_stats.py`), chat turns ≤ 120. Depth is folded or given on request.
+- **Understanding first, filler never.** Cards ≤ 700 words of prose, primers ≤ 900, the Module 01 tour ≤ 1500, chat turns ≤ 300 plus pictures. `tools/lesson_stats.py` also requires the explanation sections (how it works, data, reading guide, predict) and diagrams. An earlier, much tighter budget made a trial course skip algorithm explanations.
+- **Real code on real data.** Labs run the course's actual codebase on public datasets found by web search; a toy stand-in is never the main experiment. `setup-environment` 6b makes the real system run (containers, WSL, ports) or tells the learner what blocks it.
+- **The learner is a partner.** The agent invites questions at course start, module start and lesson end, asks for a prediction before each run, and does not advance on an open question.
 - **Experiments, not ideas.** A lesson is one 20–40 minute experiment that teaches 2–4 ideas, compares settings in one run, and shows behavior. Smaller ideas are bullets.
 - **Curriculum up front, lessons just in time.** `COURSE.md` covers the whole course from day one; primers, module maps and labs are built when the learner arrives, using what `NOTES.md` says about how earlier lessons went.
 - **Transferable first.** Modules are chosen by value to the learner's goal × how widely the idea transfers; the codebase is the worked example.

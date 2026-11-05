@@ -23,6 +23,7 @@ run.other_runs()    # result folders of earlier runs, for comparisons
 ## Comparing: `handson.compare`
 
 ```python
+ho.reading_guide({"p95 latency (ms)": "time under which 95% of requests finish; lower is better"})   # legend BEFORE the results
 ho.print_table({"setting A": {"p95 latency (ms)": 412, "errors": 0}, "setting B": {...}})
 ho.side_by_side(["a.png", "b.png"], ["setting A", "setting B"], run.out / "compare.png")   # Pillow
 with ho.timed() as t:

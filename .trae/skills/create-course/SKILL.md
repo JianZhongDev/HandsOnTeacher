@@ -37,7 +37,9 @@ It records each source in `course.json` (`sources`) with a guessed kind (`repo`,
 
 ## 4. Survey (time-boxed: read, do not run everything)
 
-Follow `method/CURRICULUM_DESIGN.md` § 2 and fill `SURVEY.md` (one page; the agent's memory of the material): the big picture of the subject in 4–8 boxes (the layers or stages of the knowledge itself, as an expert would draw them, marking which ones the codebase shows), the codebase's architecture in 4–8 boxes, concepts (general vs specific), experiment surfaces with run times, design decisions with their reasons, costs and risks. With several sources, also fill the sources map: which source teaches which concept, and which source wins where they disagree (versions, terminology). `method/LAB_PATTERNS.md` lists where experiments usually are.
+Follow `method/CURRICULUM_DESIGN.md` § 2 and fill `SURVEY.md` (one page; the agent's memory of the material): the big picture of the subject in 4–8 boxes (the layers or stages of the knowledge itself, as an expert would draw them, marking which ones the codebase shows), **the key algorithm of every box in 3–6 lines, with its source (paper section, doc page, file)**, the codebase's architecture in 4–8 boxes, concepts (general vs specific), experiment surfaces with run times, design decisions with their reasons, costs and risks.
+
+**Find real data now.** Search the web (use your search and fetch tools) for what the field uses to evaluate this kind of system: the codebase's own example data, the standard public benchmark datasets and sequences, and the published results on them (these become the references labs compare against). List 2–4 candidates in `SURVEY.md` with URL, licence, size, which boxes they exercise, and the published reference numbers. Pick one small primary dataset and, if useful, one harder held-out one. Never plan labs on random or hand-made numbers when real data exists; synthetic data needs a stated reason (rule 5 of `method/TEACHING_RULES.md`). With several sources, also fill the sources map: which source teaches which concept, and which source wins where they disagree (versions, terminology). `method/LAB_PATTERNS.md` lists where experiments usually are.
 
 ## 5. Environment
 
@@ -45,7 +47,7 @@ Use `setup-environment`. Present its plan in the same message as the curriculum 
 
 ## 6. Course helpers (the course's own kit)
 
-Write a small library in `_shared/` that wraps the primary codebase for labs, so each lab stays 20–60 readable lines. Typically 3–6 functions: build or load the thing under study, run it with settings, measure the observable behavior, and apply common changes. Example from a robot-learning course: `make_env`, `train(minutes, configure=...)`, `evaluate(policy, test_configure=...) -> falls, speed`, `set_physics(cfg, friction=...)`.
+Write a small library in `_shared/` that wraps the primary codebase **and its real data** for labs, so each lab stays 20–60 readable lines. It calls the real codebase; it never re-implements the method as a toy. Include helpers that load the dataset, compute the field's standard metrics against the reference, and draw the standard figures with labelled axes. Typically 3–6 functions: build or load the thing under study, run it with settings, measure the observable behavior, and apply common changes. Example from a robot-learning course: `make_env`, `train(minutes, configure=...)`, `evaluate(policy, test_configure=...) -> falls, speed`, `set_physics(cfg, friction=...)`.
 
 - Document it in `_shared/README.md`: one code block per function with arguments, units and return values, plus measured run times.
 - Add `_shared/selftest.py`, which exercises each function on a tiny input in under a minute, and point the launcher's `CHECK` at it. `lab check` must pass.
@@ -59,14 +61,19 @@ Follow `method/CURRICULUM_DESIGN.md` §§ 1, 3–5. Write `COURSE.md` from its t
 - course-specific rules: asset licenses, compute facts, domain safety rules (for example "robot renderings stay in `results/`", "runs over 10 minutes need approval");
 - the module table in three tracks: Module 01 is the **big picture** (the whole subject, run end to end); **core** modules cover the essential boxes in dependency order and end with the capstone; **bonus** modules hold the deeper or narrower topics, offered after the core;
 - one entry per module (track, place in the big picture, big question, primer fundamentals, transferable idea, read, experiments, build task, evidence, outcome, cost, bonus lessons), citing sources;
-- the course map: the big picture of the subject, one box per area, labelled with the modules that cover it. Draw `figures/course_map.png` with `handson.layer_diagram` (layered subjects, top to bottom) or `handson.flow_diagram` (pipelines and algorithms, left to right) through `lab run figures/make_course_map.py`, or a Mermaid block if Python plotting is unavailable. Let the script take a box to highlight: `plan-module` redraws it for each module's primer.
+- the course map: the big picture of the subject, one box per area, plus `figures/pipeline.png` showing what flows between the boxes, labelled with the modules that cover it. Draw `figures/course_map.png` with `handson.layer_diagram` (layered subjects, top to bottom) or `handson.flow_diagram` (pipelines and algorithms, left to right) through `lab run figures/make_course_map.py`, or a Mermaid block if Python plotting is unavailable. Let the script take a box to highlight: `plan-module` redraws it for each module's primer.
 
-Then pilot Module 01's main experiment with the course helpers (§ 6 of the method). Fix the plan if it does not show a visible change.
+Each entry also names the module's **key algorithm** (what the primer will walk through) and its **data** (dataset, excerpt, reference).
+
+Then pilot Module 01's main experiment: **the real system on the real dataset**, end to end (§ 6 of the method). Do not present the course until it ran and its outputs are interpretable. If the real thing cannot run here, resolve it with the learner first (`setup-environment` 6b); do not substitute a toy and continue.
+
+**Prepare just in time.** Write each module's primer and lesson cards when the learner reaches them, so they adapt to the learner's questions. Preparing every lesson up front tends to produce generic cards; if the learner asks for it, still apply the same rules to each.
 
 ## 8. Hand over
 
 - `STATE.md`: course created (date), environment summary, next action "plan-module for Module 01".
-- Message to the learner (≤ 120 words plus the course map): the promise in one line, a table with one row per core module (module · you will be able to · time), the total time, one line naming the optional bonus modules, and how the course works in one sentence (big picture first; each module a five-minute primer, then experiments: one command, compare, tweak).
+- Message to the learner (≤ 250 words plus the course map): the promise in one line, a table with one row per core module (module · you will be able to · time), the total time, one line naming the optional bonus modules, the real data and real code the labs use (named, with the setup state), and how the course works (big picture first as a guided tour; each module a primer that explains its algorithm, then experiments on real data: understand, predict, run, read together, tweak).
+- **Ask the learner to be an active partner**, in one or two sentences: "Interrupt me any time: ask why, ask what a figure means, say 'explain again' or 'show me a picture', tell me what you want to see. I won't move on while something is unclear."
 - End with: `▶ Next: reply "start" to begin Module 01 now, or later open a new session here and type teach-lesson continue.`
 - If they reply "start", use `plan-module` for Module 01.
 

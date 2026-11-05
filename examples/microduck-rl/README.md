@@ -35,7 +35,7 @@ Cost: ~4 min and ~15 min on an NVIDIA GPU; one shared 10-minute policy, cached
 Bonus lessons: system identification (measure the real robot's parameters to set the ranges)
 ```
 
-The module that came out of it: [MAP.md](12-domain-randomization-and-transfer/MAP.md), and one finished lesson card: [12.L02](12-domain-randomization-and-transfer/lessons/L02-practice-with-variation/LESSON.md) with its [your_turn.py](12-domain-randomization-and-transfer/lessons/L02-practice-with-variation/your_turn.py). The card is 222 words, opening with what it teaches; everything else is in the lab's output and the folded details.
+The module that came out of it: [MAP.md](12-domain-randomization-and-transfer/MAP.md), and one finished lesson card: [12.L02](12-domain-randomization-and-transfer/lessons/L02-practice-with-variation/LESSON.md) with its [your_turn.py](12-domain-randomization-and-transfer/lessons/L02-practice-with-variation/your_turn.py). Its length is a guide only: the card opens with what it teaches, explains the mechanism with a diagram, and carries a reading guide and a prediction prompt (this example was written under the earlier, shorter budgets and then brought up to the current section list).
 
 ## A lightning cut (illustrative)
 
@@ -56,8 +56,18 @@ Bonus modules, offered after the capstone: kinematics derivations, tabular RL, P
 
 | First version | Fix (now a rule) |
 |---|---|
-| Lesson pages of 700–1,000 words | card ≤ 300 words of prose, opening with what it teaches; depth folded or on request |
+| Lesson pages of 700–1,000 words of history and padding | filler cut, but a card up to 700 words that opens with what it teaches and explains the mechanism with a diagram; extra depth folded or on request |
 | Labs printed numbers ("the reward changed by 0.3") | compare settings side by side and show what the robot does |
 | Five lessons for one module, one small idea each | one 20–40 minute experiment teaches 2–4 ideas; 2–3 lessons per module |
 | Learners read about designs | build your own version first, then compare with the codebase's |
 | Derivations and source line numbers inline | `math` / `deeper` / `why` / `source` on demand |
+
+A later course (SLAM with VINS-Fusion) showed the opposite failure after the first fixes were over-applied:
+
+| Second version | Fix (now a rule) |
+|---|---|
+| Tiny word budgets left no room to explain algorithms; the big-picture module only named boxes | guided tour with one stop per box, key algorithm explained with a diagram; budgets of 700 / 900 / 1500 words |
+| Labs ran a toy simulation on random numbers instead of the real system | real codebase on real, public data; toys only as a labelled extra |
+| Plots and tables appeared with no explanation | reading guide for every output; walk-through in reading order |
+| The learner ran commands without knowing why | explain, predict, run, read together, change |
+| The learner was a passive recipient | explicit invitation to ask, `slower`, `explain again`, `show me a picture` |
